@@ -7,6 +7,7 @@ const SPLASH_TITLE = "Dumka ?";
 const SPLASH_TEXT = "зв’язок зі школою та її\nобітатєлями";
 
 // Colors
+const fabColor = Color(0xFF5447BD);
 const MaterialColor white = const MaterialColor(
   0xFFFFFFFF,
   const <int, Color>{
