@@ -1,15 +1,42 @@
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProposalsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: ProposalsWidget()
+      appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
+        title: Row(
+          children: <Widget>[
+            FlatButton(
+              onPressed: () {
+                // todo Proposals
+              },
+              child: Text(
+                PROPOSALS_TEXT,
+                style: TextStyle(fontSize: 25.0, color: Colors.black),
+              ),
+            ),
+            FlatButton(
+              onPressed: () {
+                // todo Reports
+              },
+              child: Text(
+                REPORTS_TEXT,
+                style: TextStyle(fontSize: 25.0, color: Colors.grey),
+              ),
+            ),
+          ],
+        ),
       ),
-
+      body: SafeArea(child: ProposalsWidget()),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: fabColor,
@@ -45,7 +72,6 @@ class ProposalsScreen extends StatelessWidget {
         ),
         color: Colors.white,
       ),
-
     );
   }
 }
@@ -55,8 +81,36 @@ class ProposalsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // todo
     return Container(
-      child: Text("Proposals Screen"),
+      child: ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: namesOfProposal.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            margin: new EdgeInsets.symmetric(vertical: 8.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: ListTile(
+              leading: SvgPicture.asset("assets/brain.svg"),
+              title: Text(
+                "${namesOfProposal[index]}",
+                style: TextStyle(fontSize: 15),
+              ),
+              trailing: Container(
+                width: 40.0,
+                height: 20.0,
+                padding: const EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                decoration: new BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(5.0)),
+                child: Text("${numberOfComments[index]}",
+                    style: TextStyle(fontSize: 10)),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
-
 }

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 const TITLE = "Dumka";
 const SPLASH_TITLE = "Dumka ?";
 const SPLASH_TEXT = "зв’язок зі школою та її\nобітатєлями";
+const PROPOSALS_TEXT = "Пропозиції";
+const REPORTS_TEXT = "Скарги";
 
 // Colors
 const fabColor = Color(0xFF5447BD);
@@ -23,3 +25,17 @@ const MaterialColor white = const MaterialColor(
     900: const Color(0xFFFFFFFF),
   },
 );
+
+//Arrays of data
+  final List<String> namesOfProposal = <String>[
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом",
+    "Більше годин з психологом"
+  ];
+  final List<int> numberOfComments = <int>[5, 34, 53, 63, 12, 54, 63, 12, 34];

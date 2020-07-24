@@ -1,6 +1,7 @@
-import 'file:///C:/Users/Roman/IdeaProjects/Dumka/lib/screens/splash_screen.dart';
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
