@@ -1,41 +1,51 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// Text
-const TITLE = "Dumka";
-const SPLASH_TITLE = "Dumka ?";
-const SPLASH_TEXT = "зв’язок зі школою та її\nобітатєлями";
-const PROPOSALS_TEXT = "Пропозиції";
-const REPORTS_TEXT = "Скарги";
+/// demo class for all texts
+class Texts {
+  const Texts();
 
-// Colors
-const fabColor = Color(0xFF5447BD);
-const MaterialColor white = const MaterialColor(
-  0xFFFFFFFF,
-  const <int, Color>{
-    50: const Color(0xFFFFFFFF),
-    100: const Color(0xFFFFFFFF),
-    200: const Color(0xFFFFFFFF),
-    300: const Color(0xFFFFFFFF),
-    400: const Color(0xFFFFFFFF),
-    500: const Color(0xFFFFFFFF),
-    600: const Color(0xFFFFFFFF),
-    700: const Color(0xFFFFFFFF),
-    800: const Color(0xFFFFFFFF),
-    900: const Color(0xFFFFFFFF),
-  },
-);
+  static const title = 'Dumka';
+  static const splashTitle = 'Dumka ?';
+  static const splashSubtitle = 'зв’язок зі школою та її\nобітатєлями';
+  static const proposalsText = 'Пропозиції';
+  static const reportsText = 'Скарги';
+}
 
-//Arrays of data
-  final List<String> namesOfProposal = <String>[
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом",
-    "Більше годин з психологом"
+/// ui styles
+class UIConfig {
+  const UIConfig();
+
+  /// main color: spinner, fab
+  static final primaryColor = Colors.deepPurple[500];
+  static final bgColor = Colors.grey[200];
+}
+
+/// data placeholders
+class DemoData {
+  const DemoData();
+
+  // todo use models
+  static const List<String> namesOfProposal = <String>[
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом',
+    'Більше годин з психологом'
   ];
-  final List<int> numberOfComments = <int>[5, 34, 53, 63, 12, 54, 63, 12, 34];
+
+  static const List<int> numberOfComments = <int>[
+    5,
+    34,
+    53,
+    63,
+    12,
+    54,
+    63,
+    12,
+    34
+  ];
+}

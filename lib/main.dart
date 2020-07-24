@@ -10,14 +10,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // todo use routes & loading bloc for navigating authed/not authed
     return MaterialApp(
-      title: TITLE,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SplashScreen()
-    );
+        title: Texts.title,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SplashScreen());
   }
 }
