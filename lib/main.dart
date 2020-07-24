@@ -1,6 +1,7 @@
-import 'file:///C:/Users/Roman/IdeaProjects/Dumka/lib/screens/splash_screen.dart';
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,14 +10,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // todo use routes & loading bloc for navigating authed/not authed
     return MaterialApp(
-      title: TITLE,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SplashScreen()
-    );
+        title: Texts.title,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SplashScreen());
   }
 }
