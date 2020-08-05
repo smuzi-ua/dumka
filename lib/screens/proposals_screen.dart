@@ -5,6 +5,206 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ProposalsScreen extends StatelessWidget {
+  void showAddSuggestionWindow(context){
+    DumkaModalSheet.show(
+        context: context,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          height: 500,
+          child: SingleChildScrollView(
+              child: Container(
+                constraints: BoxConstraints(maxWidth: 300),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 40),
+                      child: Text(
+                        'Додавання нової пропозиції',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Тема',
+
+                        ),
+                      ),
+                    ),
+                    Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: <Widget>[
+                        TextField(
+                          textAlign: TextAlign.left,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Текст',
+                          ),
+                          maxLines: 100,
+                          minLines: 5,
+                        ),
+                        FlatButton(
+                          child: Icon(
+                            Icons.attach_file,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: 44,
+                            minWidth: 179,
+                          ),
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Додати пропозицію',
+                            ),
+                            color: prpl,
+                            textColor: Colors.white,
+                          )),
+                    )
+
+                  ],
+                ),
+              )), // This trailing comma makes auto-formatting nicer for build methods.
+        )
+    );
+  }
+  void showSettingsWindow(context){
+    DumkaModalSheet.show(
+        context: context,
+        child:Column(
+            children:<Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,59.0, 0, 8),
+                child: Container(
+                  width: 68,
+                  height: 68,
+                  decoration: BoxDecoration(
+                    shape:BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
+                      //fit: BoxFit.fill
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,2.62),
+                child: Text("Ім'я Прізвище", style: TextStyle(fontSize: 18),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: grey,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  child: InkWell(
+                    onTap: (){},
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left:12.0),
+                          child: Text("Обліковий запис"),
+                        ),
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                              icon:Icon(Icons.account_circle ),
+                              onPressed: (){//do nothing
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xFFF5F5F5),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left:12.0),
+                        child: Text("Налаштування"),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            icon:Icon(Icons.settings),
+                            onPressed: (){//do nothing
+                            },
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xFFF5F5F5),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left:12.0),
+                        child: Text("Про Думку"),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            icon:Icon(Icons.message),
+                            onPressed: (){//do nothing
+                            },
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,3.84,0,21.84),
+                child: FlatButton(
+                  onPressed: (){},
+                  color: Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                  child: Text("Вийти"),
+                ),
+              ),
+              Text("Dumka for Android, v 1.0", style: TextStyle(fontSize: 11),),
+              Text("2020", style: TextStyle(fontSize: 10),),
+            ])
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +246,7 @@ class ProposalsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: UIConfig.primaryColor,
         onPressed: () {
-          // todo Add Button
+          showAddSuggestionWindow(context);
         },
         child: const Icon(
           MdiIcons.plus,
@@ -65,7 +265,7 @@ class ProposalsScreen extends StatelessWidget {
                 icon: const Icon(MdiIcons.menu),
                 color: Colors.grey,
                 onPressed: () {
-                  // todo Menu
+                  showSettingsWindow(context);
                 },
               ),
               IconButton(

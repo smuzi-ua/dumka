@@ -28,4 +28,4 @@ flutter:
   uses-material-design: false
 
   assets:
-    - assets/
+    - assets/bottom_sheet_template.png
