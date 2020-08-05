@@ -135,7 +135,7 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.rectangle,
                                                 image: DecorationImage(
-                                                    image: AssetImage("images/Subtract.png"),
+                                                    image: AssetImage("assets/bottom_sheet_template.png"),
                                                   fit: BoxFit.fill
                                                 ),
                                                 borderRadius: BorderRadius.all(Radius.circular(25.0))),
