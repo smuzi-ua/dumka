@@ -5,19 +5,18 @@ import 'package:flutter/material.dart';
 
 @immutable
 class DumkaModalSheet extends StatefulWidget {
-
   final Color backgroundColor;
   final Widget child;
 
-  DumkaModalSheet({this.child,  this.backgroundColor});
+  DumkaModalSheet({this.child, this.backgroundColor});
 
   @override
   _DumkaModalSheetState createState() => _DumkaModalSheetState();
 
   static show(
       {@required BuildContext context,
-        @required child,
-        backgroundColor = const Color(0xb3212121)}) {
+      @required Widget child,
+      Color backgroundColor = const Color(0xb3212121)}) {
     Navigator.push(
         context,
         PageRouteBuilder(
@@ -41,7 +40,8 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
   final GlobalKey _childKey = GlobalKey();
 
   double get _childHeight {
-    final RenderBox renderBox = _childKey.currentContext.findRenderObject();
+    final RenderBox renderBox =
+        _childKey.currentContext.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
@@ -54,9 +54,12 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
 
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 140));
-    _curvedAnimation = CurvedAnimation(parent:_animationController, curve:  Interval(0, 0.140, curve: Curves.easeOut));
+    _curvedAnimation = CurvedAnimation(
+        parent: _animationController,
+        curve: Interval(0, 0.140, curve: Curves.easeOut));
     _animation = Tween<double>(begin: 1.3, end: 0).animate(_curvedAnimation);
-    _colorTween = ColorTween(begin: Colors.transparent, end: Colors.black54).animate(_curvedAnimation);
+    _colorTween = ColorTween(begin: Colors.transparent, end: Colors.black54)
+        .animate(_curvedAnimation);
 
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.dismissed) Navigator.pop(context);
@@ -75,13 +78,13 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
     if (_dismissUnderway) return;
 
     var change = details.primaryDelta / (_childHeight ?? details.primaryDelta);
-      _animationController.value -= change;
+    _animationController.value -= change;
   }
 
   void _handleDragEnd(DragEndDetails details) {
     if (_dismissUnderway) return;
 
-    if (details.velocity.pixelsPerSecond.dy < 0 ) return;
+    if (details.velocity.pixelsPerSecond.dy < 0) return;
 
     if (details.velocity.pixelsPerSecond.dy > 700) {
       final double flingVelocity =
@@ -111,49 +114,49 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
                 key: _childKey,
                 children: <Widget>[
                   Spacer(),
-                AnimatedBuilder(
-                        animation: _animation,
-                        builder: (context, _) {
-                          return Transform(
-                            transform: Matrix4.translationValues(
-                                0.0, width * _animation.value, 0.0),
-                            child: Container(
-                              height: 500,
-                              width:double.infinity,
-                              child: Stack(
-                                alignment: Alignment.topCenter,
-                                children: <Widget>[
-
-                                  Positioned(
-                                    top:27.5,
-                                    height: 500,
-                                    width: width,
-                                    child: GestureDetector(
-                                        behavior: HitTestBehavior.opaque,
-                                        onTap: () {},
-                                        child: Container(
-                                            decoration: BoxDecoration(
-                                                shape: BoxShape.rectangle,
-                                                image: DecorationImage(
-                                                    image: AssetImage("assets/bottom_sheet_template.png"),
-                                                  fit: BoxFit.fill
-                                                ),
-                                                borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                                            child:widget.child)),
+                  AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, _) {
+                        return Transform(
+                          transform: Matrix4.translationValues(
+                              0.0, width * _animation.value, 0.0),
+                          child: Container(
+                            height: 500,
+                            width: double.infinity,
+                            child: Stack(
+                              alignment: Alignment.topCenter,
+                              children: <Widget>[
+                                Positioned(
+                                  top: 27.5,
+                                  height: 500,
+                                  width: width,
+                                  child: GestureDetector(
+                                      behavior: HitTestBehavior.opaque,
+                                      onTap: () {},
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.rectangle,
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/bottom_sheet_template.png"),
+                                                  fit: BoxFit.fill),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(25.0))),
+                                          child: widget.child)),
+                                ),
+                                FloatingActionButton(
+                                  backgroundColor: prpl,
+                                  child: Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 55.0,
                                   ),
-                                  FloatingActionButton(
-                                    backgroundColor: prpl,
-                                    child: Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 55.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          );
-                        }),
+                          ),
+                        );
+                      }),
                 ],
               ),
             ),
@@ -162,10 +165,8 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
         ));
   }
 
-
   Future<bool> onBackPressed() {
     _animationController.reverse();
     return Future<bool>.value(false);
   }
 }
-
