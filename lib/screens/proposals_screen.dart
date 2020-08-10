@@ -1,8 +1,9 @@
 import 'package:Dumka/utils/const.dart';
+import 'package:Dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ProposalsScreen extends StatelessWidget {
@@ -49,7 +50,7 @@ class ProposalsScreen extends StatelessWidget {
                     FlatButton(
                       onPressed: () {},
                       child: const Icon(
-                        Icons.attach_file,
+                        MdiIcons.paperclip,
                         color: Colors.black,
                       ),
                     ),
@@ -124,7 +125,7 @@ class ProposalsScreen extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: IconButton(
-                          icon: const Icon(Icons.account_circle),
+                          icon: const Icon(MdiIcons.accountCircle),
                           onPressed: () {
                             //do nothing
                           },
@@ -152,7 +153,7 @@ class ProposalsScreen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: IconButton(
-                        icon: const Icon(Icons.settings),
+                        icon: const Icon(MdiIcons.cog),
                         onPressed: () {
                           //do nothing
                         },
@@ -179,7 +180,7 @@ class ProposalsScreen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: IconButton(
-                        icon: const Icon(Icons.message),
+                        icon: const Icon(MdiIcons.message),
                         onPressed: () {
                           //do nothing
                         },
@@ -345,15 +346,13 @@ class ProposalsWidget extends StatelessWidget {
                             onPressed: () {},
                             child: Row(
                               children: <Widget>[
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Icon(
                                   MdiIcons.triangle,
                                   color: Colors.deepPurple[400],
                                   size: 11,
                                 ),
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Text(
                                   DemoData.numberOfComments[index].toString(),
                                   style: GoogleFonts.poppins(
@@ -366,8 +365,7 @@ class ProposalsWidget extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const Spacer(
-                        ),
+                        const Spacer(),
                         SizedBox(
                           width: 44,
                           height: 22,
@@ -380,8 +378,7 @@ class ProposalsWidget extends StatelessWidget {
                             onPressed: () {},
                             child: Row(
                               children: <Widget>[
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Transform.rotate(
                                   angle: 180 * 3.14 / 180,
                                   child: const Icon(
@@ -390,8 +387,7 @@ class ProposalsWidget extends StatelessWidget {
                                     size: 11,
                                   ),
                                 ),
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Text(
                                   DemoData.numberOfComments[index].toString(),
                                   style: GoogleFonts.poppins(
@@ -422,15 +418,13 @@ class ProposalsWidget extends StatelessWidget {
                             },
                             child: Row(
                               children: <Widget>[
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Icon(
                                   MdiIcons.commentMultipleOutline,
                                   color: UIConfig.primaryColor,
                                   size: 12,
                                 ),
-                                const Spacer(
-                                ),
+                                const Spacer(),
                                 Text(
                                   DemoData.numberOfComments[index].toString(),
                                   style: GoogleFonts.poppins(

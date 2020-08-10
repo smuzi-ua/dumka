@@ -1,6 +1,7 @@
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AuthorizationScreen extends StatefulWidget {
   @override
@@ -65,7 +66,7 @@ class AuthorizationState extends State<AuthorizationScreen> {
                             decoration:
                                 const InputDecoration(labelText: 'Школа'),
                             hint: const Text('Школа'),
-                            icon: const Icon(Icons.arrow_downward),
+                            icon: const Icon(MdiIcons.arrowDown),
                             elevation: 16,
                             onChanged: (String newValue) {
                               setState(() {
