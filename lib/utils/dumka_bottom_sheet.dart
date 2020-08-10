@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 @immutable
 class DumkaModalSheet extends StatefulWidget {
@@ -150,7 +151,7 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
                                   onPressed: onBackPressed,
                                   backgroundColor: prpl,
                                   child: const Icon(
-                                    Icons.close,
+                                    MdiIcons.close,
                                     color: Colors.white,
                                     size: 26.0,
                                   ),

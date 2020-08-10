@@ -215,75 +215,79 @@ class ProposalsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: UIConfig.bgColor,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: UIConfig.bgColor,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+          // todo proper tabs & navigation
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: TabBar(
+              isScrollable: true,
+              labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+              unselectedLabelColor: Colors.grey[500],
+              labelColor: Colors.grey[800],
+              labelStyle: GoogleFonts.montserrat(
+                  textStyle: const TextStyle(
+                      fontSize: 28.0, fontWeight: FontWeight.bold)),
+              indicatorColor: Colors.transparent,
+              // ignore: prefer_const_literals_to_create_immutables
+              tabs: [
+                const Tab(text: Texts.proposalsText),
+                const Tab(text: Texts.reportsText),
+              ],
+            ),
           ),
         ),
-        // todo proper tabs & navigation
-        title: Row(
-          children: <Widget>[
-            FlatButton(
-              onPressed: () {
-                // todo open proposal screen
-              },
-              child: const Text(
-                Texts.proposalsText,
-                style: TextStyle(fontSize: 25.0, color: Colors.black),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                // todo Reports
-              },
-              child: const Text(
-                Texts.reportsText,
-                style: TextStyle(fontSize: 25.0, color: Colors.grey),
-              ),
-            ),
+        body: TabBarView(
+          children: [
+            ProposalsWidget(),
+            ReportsWidget(),
           ],
         ),
-      ),
-      body: SafeArea(child: ProposalsWidget()),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: UIConfig.primaryColor,
-        onPressed: () {
-          showAddSuggestionWindow(context);
-        },
-        child: const Icon(
-          MdiIcons.plus,
-          color: Colors.white,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: UIConfig.primaryColor,
+          onPressed: () {
+            showAddSuggestionWindow(context);
+          },
+          child: const Icon(
+            MdiIcons.plus,
+            color: Colors.white,
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: Colors.white,
-        child: SizedBox(
-          height: 54,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(MdiIcons.menu),
-                color: Colors.grey,
-                onPressed: () {
-                  showSettingsWindow(context);
-                },
-              ),
-              IconButton(
-                icon: const Icon(MdiIcons.magnify),
-                color: Colors.grey,
-                onPressed: () {
-                  // todo Search
-                },
-              ),
-            ],
+        bottomNavigationBar: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          color: Colors.white,
+          child: SizedBox(
+            height: 54,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon: const Icon(MdiIcons.menu),
+                  color: Colors.grey,
+                  onPressed: () {
+                    showSettingsWindow(context);
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(MdiIcons.magnify),
+                  color: Colors.grey,
+                  onPressed: () {
+                    // todo Search
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
