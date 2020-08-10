@@ -16,8 +16,8 @@ class DumkaModalSheet extends StatefulWidget {
 
   static show(
       {@required BuildContext context,
-        @required child,
-        backgroundColor = const Color(0xb3212121)}) {
+        @required Widget child,
+        Color backgroundColor = const Color(0xb3212121)}) {
     Navigator.push(
         context,
         PageRouteBuilder(
@@ -41,7 +41,7 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
   final GlobalKey _childKey = GlobalKey();
 
   double get _childHeight {
-    final RenderBox renderBox = _childKey.currentContext.findRenderObject();
+    final RenderBox renderBox =  _childKey.currentContext.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
@@ -53,8 +53,8 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
     super.initState();
 
     _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 140));
-    _curvedAnimation = CurvedAnimation(parent:_animationController, curve:  Interval(0, 0.140, curve: Curves.easeOut));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+    _curvedAnimation = CurvedAnimation(parent:_animationController, curve: Curves.easeOut);
     _animation = Tween<double>(begin: 1.3, end: 0).animate(_curvedAnimation);
     _colorTween = ColorTween(begin: Colors.transparent, end: Colors.black54).animate(_curvedAnimation);
 

@@ -18,6 +18,10 @@ class UIConfig {
   /// main color: spinner, fab
   static final primaryColor = Colors.deepPurple[500];
   static final bgColor = Colors.grey[200];
+  static Color purple2 =  const Color(0xAA651FFF);
+  static  Color grey = const Color(0xFFF5F5F5);
+  static  Color purple3 = const Color(0xFF7C4DFF);
+
 }
 
 /// data placeholders

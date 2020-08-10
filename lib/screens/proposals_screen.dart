@@ -1,13 +1,15 @@
 import 'package:Dumka/utils/const.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:Dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart' ;
 
 class ProposalsScreen extends StatelessWidget {
-  void showAddSuggestionWindow(context){
+
+
+  void showAddSuggestionWindow(c){
     DumkaModalSheet.show(
-        context: context,
+        context: c,
         child: Container(
           alignment: Alignment.bottomCenter,
           height: 500,
@@ -18,14 +20,14 @@ class ProposalsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 40),
                       child: Text(
                         'Додавання нової пропозиції',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
-                    Padding(
+                   const Padding(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                       child: TextField(
                         decoration: InputDecoration(
@@ -71,7 +73,7 @@ class ProposalsScreen extends StatelessWidget {
                             child: Text(
                               'Додати пропозицію',
                             ),
-                            color: prpl,
+                            color: UIConfig.purple2,
                             textColor: Colors.white,
                           )),
                     )
@@ -109,7 +111,7 @@ class ProposalsScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(9.0),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: grey,
+                      color: UIConfig.grey,
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   child: InkWell(
@@ -246,7 +248,8 @@ class ProposalsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: UIConfig.primaryColor,
         onPressed: () {
-          showAddSuggestionWindow(context);
+          BuildContext cn = context;
+          showAddSuggestionWindow(cn);
         },
         child: const Icon(
           MdiIcons.plus,

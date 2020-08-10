@@ -21,11 +21,11 @@ dev_dependencies:
     sdk: flutter
 
 
-  lint: ^1.2.0
+lint: ^1.2.0
 #  pedantic: ^1.9.2
 
 flutter:
-  uses-material-design: false
+  uses-material-design: true
 
   assets:
     - assets/bottom_sheet_template.png
