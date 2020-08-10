@@ -24,6 +24,8 @@ class ProposalsScreen extends StatelessWidget {
             title: Align(
               alignment: Alignment.centerLeft,
               child: TabBar(
+                isScrollable: true,
+                labelPadding: const EdgeInsets.symmetric(horizontal: 5),
                 unselectedLabelColor: Colors.grey[500],
                 labelColor: Colors.grey[800],
                 labelStyle: GoogleFonts.montserrat(
@@ -126,129 +128,128 @@ class ProposalsWidget extends StatelessWidget {
                     style: GoogleFonts.roboto(
                         textStyle: const TextStyle(fontSize: 14)),
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 44,
-                        height: 22,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.deepPurple[400]),
-                            borderRadius: BorderRadius.circular(6.0),
-                          ),
-                          padding: const EdgeInsets.all(1),
-                          onPressed: () {},
-                          child: Row(
-                            children: <Widget>[
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Icon(
-                                MdiIcons.triangle,
-                                color: Colors.deepPurple[400],
-                                size: 11,
-                              ),
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Text(
-                                DemoData.numberOfComments[index].toString(),
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(fontSize: 12)),
-                              ),
-                              const Spacer(
-                                flex: 2,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      SizedBox(
-                        width: 44,
-                        height: 22,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          color: Colors.deepOrange[500],
-                          padding: const EdgeInsets.all(1),
-                          onPressed: () {},
-                          child: Row(
-                            children: <Widget>[
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Transform.rotate(
-                                angle: 180 * 3.14 / 180,
-                                child: const Icon(
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 44,
+                          height: 22,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.deepPurple[400]),
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            padding: const EdgeInsets.all(1),
+                            onPressed: () {},
+                            child: Row(
+                              children: <Widget>[
+                                const Spacer(
+                                ),
+                                Icon(
                                   MdiIcons.triangle,
-                                  color: Colors.white,
+                                  color: Colors.deepPurple[400],
                                   size: 11,
                                 ),
-                              ),
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Text(
-                                DemoData.numberOfComments[index].toString(),
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                        fontSize: 12, color: Colors.white)),
-                              ),
-                              const Spacer(
-                                flex: 2,
-                              ),
-                            ],
+                                const Spacer(
+                                ),
+                                Text(
+                                  DemoData.numberOfComments[index].toString(),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(fontSize: 12)),
+                                ),
+                                const Spacer(
+                                  flex: 2,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 100.0,
-                      ),
-                      SizedBox(
-                        width: 44,
-                        height: 22,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          padding: const EdgeInsets.all(1),
-                          color: Colors.grey[300],
-                          onPressed: () {
-                            // todo Comments
-                          },
-                          child: Row(
-                            children: <Widget>[
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Icon(
-                                MdiIcons.commentMultipleOutline,
-                                color: UIConfig.primaryColor,
-                                size: 12,
-                              ),
-                              const Spacer(
-                                flex: 1,
-                              ),
-                              Text(
-                                DemoData.numberOfComments[index].toString(),
-                                style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        fontSize: 12,
-                                        color: UIConfig.primaryColor)),
-                              ),
-                              const Spacer(
-                                flex: 2,
-                              ),
-                            ],
+                        const Spacer(
+                        ),
+                        SizedBox(
+                          width: 44,
+                          height: 22,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            color: Colors.deepOrange[500],
+                            padding: const EdgeInsets.all(1),
+                            onPressed: () {},
+                            child: Row(
+                              children: <Widget>[
+                                const Spacer(
+                                ),
+                                Transform.rotate(
+                                  angle: 180 * 3.14 / 180,
+                                  child: const Icon(
+                                    MdiIcons.triangle,
+                                    color: Colors.white,
+                                    size: 11,
+                                  ),
+                                ),
+                                const Spacer(
+                                ),
+                                Text(
+                                  DemoData.numberOfComments[index].toString(),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                          fontSize: 12, color: Colors.white)),
+                                ),
+                                const Spacer(
+                                  flex: 2,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                        const Spacer(
+                          flex: 13,
+                        ),
+                        SizedBox(
+                          width: 44,
+                          height: 22,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            padding: const EdgeInsets.all(1),
+                            color: Colors.grey[300],
+                            onPressed: () {
+                              // todo Comments
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                const Spacer(
+                                ),
+                                Icon(
+                                  MdiIcons.commentMultipleOutline,
+                                  color: UIConfig.primaryColor,
+                                  size: 12,
+                                ),
+                                const Spacer(
+                                ),
+                                Text(
+                                  DemoData.numberOfComments[index].toString(),
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          fontSize: 12,
+                                          color: UIConfig.primaryColor)),
+                                ),
+                                const Spacer(
+                                  flex: 2,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
