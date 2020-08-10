@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^1.1.0
 
 
   # UI
@@ -29,3 +30,4 @@ flutter:
 
   assets:
     - assets/
+    - google_fonts/
