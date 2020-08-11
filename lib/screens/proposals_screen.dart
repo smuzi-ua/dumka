@@ -1,3 +1,4 @@
+import 'package:Dumka/screens/menu_screens.dart';
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,11 @@ class ProposalsScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             backgroundColor: UIConfig.primaryColor,
             onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MenuScreens('Обліковий запис', AccountWidget()),
+                  ));
               // todo Add Button
             },
             child: const Icon(
@@ -294,8 +300,7 @@ class ReportsWidget extends StatelessWidget {
               style:
                   GoogleFonts.roboto(textStyle: const TextStyle(fontSize: 14)),
             ),
-            const SizedBox(
-              width: 18.0,
+            const Spacer(
             ),
             Container(
               width: 25,
@@ -309,6 +314,8 @@ class ReportsWidget extends StatelessWidget {
                     textStyle:
                         TextStyle(fontSize: 12, color: UIConfig.primaryColor)),
               ),
+            ),
+            const Spacer(
             ),
           ]),
         );
