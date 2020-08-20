@@ -52,11 +52,6 @@ class ProposalsScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             backgroundColor: UIConfig.primaryColor,
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MenuScreens('Обліковий запис', AccountWidget()),
-                  ));
               // todo Add Button
             },
             child: const Icon(
