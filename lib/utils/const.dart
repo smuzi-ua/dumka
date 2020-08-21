@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 /// demo class for all texts
 class Texts {
   const Texts();
-
   static const title = 'Dumka';
   static const splashTitle = 'Dumka ?';
   static const splashSubtitle = 'зв’язок зі школою та її\nобітатєлями';

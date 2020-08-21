@@ -48,7 +48,8 @@ class SplashScreen extends StatelessWidget {
                 width: 22,
                 child: CircularProgressIndicator(
                   strokeWidth: 3,
-                  backgroundColor: UIConfig.primaryColor,
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
                 ),
               ),
             ),

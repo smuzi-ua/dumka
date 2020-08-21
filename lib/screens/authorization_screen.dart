@@ -1,40 +1,43 @@
-import 'package:Dumka/screens/proposals_screen.dart';
 import 'package:Dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AuthorizationScreen extends StatefulWidget {
   @override
   AuthorizationState createState() {
-    return new AuthorizationState();
+    return AuthorizationState();
   }
 }
 
 class AuthorizationState extends State<AuthorizationScreen> {
   @override
   Widget build(BuildContext context) {
-    String dropDownValue = '1';
-    var dropDownMenuItems = [
+    var dropDownValue = '1';
+    final dropDownMenuItems = [
       const DropdownMenuItem(
         value: '1',
         child: Text('ЛФМЛ'),
       ),
-      const DropdownMenuItem(child: Text('УФМЛ'), value: '2'),
-      const DropdownMenuItem( value: '3',child: Text('Школа №47')),
-      const DropdownMenuItem(child: Text('Школа №56'), value: '4')
+      const DropdownMenuItem(
+        value: '2',
+        child: Text('УФМЛ'),
+      ),
+      const DropdownMenuItem(value: '3', child: Text('Школа №47')),
+      const DropdownMenuItem(
+        value: '4',
+        child: Text('Школа №56'),
+      )
     ];
     return Scaffold(
       backgroundColor: UIConfig.purple3,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
         // ignore: prefer_const_literals_to_create_immutables
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(75.67),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.all(75.67),
+            child: Text(
               'Dumka ?',
               style: TextStyle(color: Colors.white, fontSize: 32),
             ),
@@ -42,17 +45,14 @@ class AuthorizationState extends State<AuthorizationScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   color: Colors.white),
               height: 400,
               child: Container(
-                padding: EdgeInsets.all(25),
+                padding: const EdgeInsets.all(25),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    mainAxisSize: MainAxisSize.max,
-                    // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
                       const Text(
                         'Авторизація',
@@ -63,10 +63,10 @@ class AuthorizationState extends State<AuthorizationScreen> {
                         children: [
                           DropdownButtonFormField<String>(
                             value: dropDownValue,
-                            decoration: InputDecoration(labelText: "Школа"),
-                            hint: Text("Школа"),
-                            icon: Icon(Icons.arrow_downward),
-                            iconSize: 24,
+                            decoration:
+                                const InputDecoration(labelText: 'Школа'),
+                            hint: const Text('Школа'),
+                            icon: const Icon(MdiIcons.arrowDown),
                             elevation: 16,
                             onChanged: (String newValue) {
                               setState(() {
@@ -75,7 +75,7 @@ class AuthorizationState extends State<AuthorizationScreen> {
                             },
                             items: dropDownMenuItems,
                           ),
-                          Text('Вашої школи немає в списку?')
+                          const Text('Вашої школи немає в списку?')
                         ],
                       ),
                       const TextField(
@@ -95,13 +95,14 @@ class AuthorizationState extends State<AuthorizationScreen> {
                       Container(
                         width: 143.06,
                         child: FlatButton(
+                          onPressed: () {},
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0)),
-                          child: Text(
-                            "Увійти",
+                          disabledColor: UIConfig.purple2,
+                          child: const Text(
+                            'Увійти',
                             style: TextStyle(color: Colors.white),
                           ),
-                          disabledColor: UIConfig.purple2,
                         ),
                       )
                     ]),

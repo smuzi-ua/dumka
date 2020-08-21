@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # UI
+  google_fonts: ^1.1.0
   material_design_icons_flutter: ^4.0.5345
   flutter_svg: ^0.18.0
 
@@ -21,11 +21,12 @@ dev_dependencies:
     sdk: flutter
 
 
-lint: ^1.2.0
+  lint: ^1.2.0
 #  pedantic: ^1.9.2
 
 flutter:
-  uses-material-design: true
+  uses-material-design: false
 
   assets:
-    - assets/bottom_sheet_template.png
+    - assets/
+    - google_fonts/
