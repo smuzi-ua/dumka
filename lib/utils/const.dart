@@ -21,6 +21,7 @@ class UIConfig {
   static Color purple2 =  const Color(0xAA651FFF);
   static  Color grey = const Color(0xFFF5F5F5);
   static  Color purple3 = const Color(0xFF7C4DFF);
+  static  Color deep_purple_300 = const Color(0xFF9575CD);
 
 }
 
