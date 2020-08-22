@@ -71,86 +71,60 @@ class AccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UIConfig.bgColor,
-      body: Column(
-        children: <Widget>[
-          const Spacer(flex: 4),
-          Center(child: SvgPicture.asset('assets/account.svg')),
-          const Spacer(flex: 2),
-          // ignore: avoid_escaping_inner_quotes
-          const Text('Ім\'я Прізвище',
-              style: TextStyle(fontSize: 16, color: Colors.black)),
-          const Spacer(),
-          Text('учень',
-              style: TextStyle(fontSize: 12, color: Colors.grey[700])),
-          const Spacer(flex: 2),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text('Загальні',
-                style: TextStyle(fontSize: 14, color: Colors.grey[800])),
-          ),
-          const Spacer(),
-          Container(
-              height: 47,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: <Widget>[
-                  const Text('Нікнейм',
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
-                  const Spacer(flex: 20),
-                  Text('Nickname',
-                      style: TextStyle(
-                          fontSize: 14, color: Colors.deepPurple[200])),
-                  const Spacer(),
-                  Icon(
-                    MdiIcons.pencil,
-                    color: Colors.deepPurple[400],
-                    size: 18,
-                  ),
-                ],
-              )),
-          const Spacer(flex: 3),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text('Соціальні мережі',
-                style: TextStyle(fontSize: 14, color: Colors.grey[800])),
-          ),
-          const Spacer(),
-          Container(
-              height: 47,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                color: Colors.white,
-              ),
-              child: Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: <Widget>[
-                  const Text('Інстаграм',
-                      style: TextStyle(fontSize: 16, color: Colors.black)),
-                  const Spacer(flex: 20),
-                  Text('@Nickname',
-                      style: TextStyle(
-                          fontSize: 14, color: Colors.deepPurple[200])),
-                  const Spacer(),
-                  Icon(
-                    MdiIcons.trashCanOutline,
-                    color: Colors.deepPurple[400],
-                    size: 18,
-                  ),
-                ],
-              )),
-          const Spacer(),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: Column(
+          children: <Widget>[
+            const Spacer(flex: 4),
+            Center(child: SvgPicture.asset('assets/account.svg')),
+            const Spacer(flex: 2),
+            // ignore: avoid_escaping_inner_quotes
+            const Text('Ім\'я Прізвище',
+                style: TextStyle(fontSize: 16, color: Colors.black)),
+            const Spacer(),
+            Text(Texts.accountStudent,
+                style: TextStyle(fontSize: 12, color: Colors.grey[700])),
+            const Spacer(flex: 2),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(Texts.accountGeneral,
+                  style: TextStyle(fontSize: 14, color: Colors.grey[800])),
+            ),
+            const Spacer(),
+            Container(
                 height: 47,
-                width: MediaQuery.of(context).size.width / 4,
-                padding: const EdgeInsets.only(right: 14),
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Row(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: <Widget>[
+                    const Text(Texts.accountNickname,
+                        style: TextStyle(fontSize: 16, color: Colors.black)),
+                    const Spacer(flex: 20),
+                    Text('Nickname',
+                        style: TextStyle(
+                            fontSize: 14, color: Colors.deepPurple[200])),
+                    const Spacer(),
+                    Icon(
+                      MdiIcons.pencil,
+                      color: Colors.deepPurple[400],
+                      size: 18,
+                    ),
+                  ],
+                )),
+            const Spacer(flex: 3),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(Texts.accountNetworks,
+                  style: TextStyle(fontSize: 14, color: Colors.grey[800])),
+            ),
+            const Spacer(),
+            Container(
+                height: 47,
+                padding: const EdgeInsets.symmetric(horizontal: 14),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   color: Colors.white,
@@ -158,19 +132,48 @@ class AccountWidget extends StatelessWidget {
                 child: Row(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: <Widget>[
-                    Icon(
-                      MdiIcons.plus,
-                      color: Colors.deepPurple[400],
-                      size: 25,
-                    ),
-                    const Spacer(),
-                    const Text('Додати',
+                    const Text('Інстаграм',
                         style: TextStyle(fontSize: 16, color: Colors.black)),
+                    const Spacer(flex: 20),
+                    Text('@Nickname',
+                        style: TextStyle(
+                            fontSize: 14, color: Colors.deepPurple[200])),
+                    const Spacer(),
+                    Icon(
+                      MdiIcons.trashCanOutline,
+                      color: Colors.deepPurple[400],
+                      size: 18,
+                    ),
                   ],
                 )),
-          ),
-          const Spacer(flex: 10),
-        ],
+            const Spacer(),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                  height: 47,
+                  width: MediaQuery.of(context).size.width / 3.5,
+                  padding: const EdgeInsets.only(right: 14),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      Icon(
+                        MdiIcons.plus,
+                        color: Colors.deepPurple[400],
+                        size: 25,
+                      ),
+                      const Spacer(),
+                      const Text(Texts.accountAdd,
+                          style: TextStyle(fontSize: 16, color: Colors.black)),
+                    ],
+                  )),
+            ),
+            const Spacer(flex: 10),
+          ],
+        ),
       ),
     );
   }
@@ -179,7 +182,6 @@ class AccountWidget extends StatelessWidget {
 // ignore: must_be_immutable
 class SettingsWidget extends StatelessWidget {
   bool isChecked = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,7 +191,8 @@ class SettingsWidget extends StatelessWidget {
           const Spacer(flex: 2),
           Container(
               height: 47,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              margin: const EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 color: Colors.white,
@@ -202,7 +205,7 @@ class SettingsWidget extends StatelessWidget {
                     color: Colors.deepPurple[400],
                     size: 25,
                   ),
-                  const Text('Темна тема',
+                  const Text(Texts.settingsTheme,
                       style: TextStyle(fontSize: 16, color: Colors.black)),
                   const Spacer(flex: 11),
                   GestureDetector(
@@ -226,7 +229,8 @@ class SettingsWidget extends StatelessWidget {
           const Spacer(),
           Container(
               height: 47,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              margin: const EdgeInsets.symmetric(horizontal: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
                 color: Colors.white,
@@ -240,7 +244,7 @@ class SettingsWidget extends StatelessWidget {
                     size: 23,
                   ),
                   const Spacer(),
-                  const Text('Мова',
+                  const Text(Texts.settingsLanguage,
                       style: TextStyle(fontSize: 16, color: Colors.black)),
                   const Spacer(flex: 13),
                   DropdownButton<String>(
@@ -273,104 +277,108 @@ class AboutWidget extends StatelessWidget {
         children: <Widget>[
           const Spacer(flex: 2),
           Container(
-              height: 142,
-              width: 343,
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: const Text('*тут багато букв про нас*',
-                  style: TextStyle(fontSize: 16, color: Colors.black)),),
+            height: 142,
+            width: MediaQuery.of(context).size.width - 28,
+            margin: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: const Text(Texts.aboutText,
+                style: TextStyle(fontSize: 16, color: Colors.black)),
+          ),
           // ignore: avoid_escaping_inner_quotes
           const Spacer(flex: 2),
           // ignore: avoid_escaping_inner_quotes
-          Text('Зворотній зв\'язок',
+          Text(Texts.aboutFeedBack,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              SizedBox(
-                width: 42,
-                height: 42,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.all(1),
-                  color: Colors.white,
-                  onPressed: () {
-                    // todo Comments
-                  },
-                  child: const Icon(
-                    MdiIcons.emailOutline,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 42,
-                height: 42,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.all(1),
-                  color: Colors.white,
-                  onPressed: () {
-                    // todo Comments
-                  },
-                  child: const Icon(
-                    MdiIcons.instagram,
-                    color: Colors.black,
+          Container(
+            width: 205.2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  width: 42,
+                  height: 42,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.all(1),
+                    color: Colors.white,
+                    onPressed: () {
+                      // todo email
+                    },
+                    child: const Icon(
+                      MdiIcons.emailOutline,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 42,
-                height: 42,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.all(1),
-                  color: Colors.white,
-                  onPressed: () {
-                    // todo Comments
-                  },
-                  child: const Icon(
-                    MdiIcons.telegram,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 42,
-                height: 42,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.all(1),
-                  color: Colors.white,
-                  onPressed: () {
-                    // todo Comments
-                  },
-                  child: const Icon(
-                    MdiIcons.facebook,
-                    color: Colors.black,
+                Container(
+                  width: 42,
+                  height: 42,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.all(1),
+                    color: Colors.white,
+                    onPressed: () {
+                      // todo instagram
+                    },
+                    child: const Icon(
+                      MdiIcons.instagram,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  width: 42,
+                  height: 42,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.all(1),
+                    color: Colors.white,
+                    onPressed: () {
+                      // todo telegram
+                    },
+                    child: const Icon(
+                      MdiIcons.telegram,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 42,
+                  height: 42,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.all(1),
+                    color: Colors.white,
+                    onPressed: () {
+                      // todo facebook
+                    },
+                    child: const Icon(
+                      MdiIcons.facebook,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           const Spacer(flex: 2),
-          Text('Підтримати нас',
+          Text(Texts.aboutSupport,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const Spacer(),
-          SizedBox(
+          Container(
             width: 42,
             height: 42,
             child: FlatButton(
@@ -388,7 +396,7 @@ class AboutWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(flex: 6),
+          const Spacer(flex: 8),
         ],
       ),
     );
