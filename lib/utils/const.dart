@@ -8,6 +8,25 @@ class Texts {
   static const splashSubtitle = 'зв’язок зі школою та її\nобітатєлями';
   static const proposalsText = 'Пропозиції';
   static const reportsText = 'Скарги';
+
+  static const aboutTitle = 'Про думку';
+  static const settingsTitle = 'Налаштування';
+  static const accountTitle = 'Обліковий запис';
+
+  static const aboutText = '*тут багато букв про нас*';
+  // ignore: avoid_escaping_inner_quotes
+  static const aboutFeedBack = 'Зворотній зв\'язок';
+  static const aboutSupport = 'Підтримати нас';
+
+  static const settingsLanguage = 'Мова';
+  static const settingsTheme = 'Темна тема';
+
+  static const accountStudent = 'учень';
+  static const accountTeacher = 'учитель';
+  static const accountGeneral = 'Загальні';
+  static const accountNetworks = 'Соціальні мережі';
+  static const accountNickname = 'Нікнейм';
+  static const accountAdd = 'Додати';
 }
 
 /// ui styles
