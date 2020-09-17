@@ -18,6 +18,9 @@ dependencies:
   material_design_icons_flutter: ^4.0.5345
   flutter_svg: ^0.18.0
 
+  dio: ^3.0.10
+  flutter_bloc: ^6.0.5
+
 
 dev_dependencies:
   flutter_test:
