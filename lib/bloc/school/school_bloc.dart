@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // https://medium.com/flutter-community/implementing-bloc-pattern-using-flutter-bloc-62a62e0319b5
 // https://bloclibrary.dev/#/
+// https://www.netguru.com/codestories/flutter-bloc
 
 class SchoolBloc extends Bloc<SchoolListEvent, SchoolListState> {
   SchoolBloc() : super(SchoolListUninitializedState());
@@ -27,7 +28,8 @@ class SchoolBloc extends Bloc<SchoolListEvent, SchoolListState> {
       } else {
         yield SchoolListFetchedState(schools: schools);
       }
-    } catch (_) {
+    } catch (error) {
+      print(error);
       yield SchoolListErrorState();
     }
   }

@@ -3,7 +3,7 @@
 
 import 'package:Dumka/data/model/generic_type.dart';
 
-class School extends GenericType {
+class School {
   int id;
   String name;
   bool display;
@@ -12,7 +12,6 @@ class School extends GenericType {
 
   School.builder();
 
-  @override
   School fromJson(Map<String, dynamic> json) {
     return School(
       id: json['id'] as int,
@@ -21,7 +20,9 @@ class School extends GenericType {
     );
   }
 
-  @override
+  List<School> listFromJson(List<dynamic> listOfJson) =>
+      listOfJson.map((item) => fromJson(item as Map<String, dynamic>)).toList();
+
   Map<String, dynamic> toJson() =>
       {
         'id': id,

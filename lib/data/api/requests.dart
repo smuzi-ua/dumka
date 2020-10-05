@@ -27,7 +27,8 @@ class Requests {
     var schoolList = <School>[];
 
     if (response.statusCode == 200) {
-      schoolList = School.builder().listFromJson(response.data.data as List) as List<School>;
+      print(response.data['data']);
+      schoolList = School.builder().listFromJson(response.data['data'] as List);
     }
 
     return schoolList;
