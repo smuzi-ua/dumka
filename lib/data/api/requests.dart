@@ -48,24 +48,46 @@ class Requests {
     return response;
   }
 
-  // TODO: Add Token
-  Future<Response> fetchUserInfo() async {
-    final response = await Api.instance.dio.get(postUser);
+  Future<Response> fetchUserInfo(String token) async {
+    final response = await Api.instance.dio.get(postUser,
+        options: Options(
+          headers: {
+            'Authorization': token
+          }
+        ));
     return response;
   }
 
-  Future<Response> fetchSchoolInfo() async {
-    final response = await Api.instance.dio.get(postSchoolInfo);
+  Future<Response> fetchSchoolInfo(String token) async {
+    final response = await Api.instance.dio.get(postSchoolInfo,
+        options: Options(
+          headers: {
+            'Authorization': token
+          }
+        )
+    );
     return response;
   }
 
-  Future<Response> fetchProposalsList() async {
-    final response = await Api.instance.dio.get(postProposals);
+  Future<Response> fetchProposalsList(String token) async {
+    final response = await Api.instance.dio.get(postProposals,
+        options: Options(
+            headers: {
+              'Authorization': token
+            }
+        )
+    );
     return response;
   }
 
-  Future<Response> addProposal() async {
-    final response = await Api.instance.dio.post(postAddProposal);
+  Future<Response> addProposal(String token) async {
+    final response = await Api.instance.dio.post(postAddProposal,
+        options: Options(
+            headers: {
+              'Authorization': token
+            }
+        )
+    );
     return response;
   }
 }
