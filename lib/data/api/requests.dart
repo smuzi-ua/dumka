@@ -23,25 +23,23 @@ const postAddProposal = '/v1/u/proposals_add';
 class Requests {
 
   Future<List<School>> fetchSchools() async {
-    final response = await Api.instance.dio.post(postSchools);
-    final _schoolList = <School>[];
+    final response = await Api.instance.dio.get(postSchools);
+    var schoolList = <School>[];
 
     if (response.statusCode == 200) {
-      response.data.forEach((data) {
-        _schoolList.add(School.fromJson(data as Map<String, dynamic>));
-      });
+      schoolList = School.builder().listFromJson(response.data.data as List) as List<School>;
     }
 
-    return _schoolList;
+    return schoolList;
   }
 
   Future<Response> fetchStatus() async {
-    final response = await Api.instance.dio.post(postStatus);
+    final response = await Api.instance.dio.get(postStatus);
     return response;
   }
 
   Future<Response> fetchReportCategories() async {
-    final response = await Api.instance.dio.post(postReportCategories);
+    final response = await Api.instance.dio.get(postReportCategories);
     return response;
   }
 
@@ -52,17 +50,17 @@ class Requests {
 
   // TODO: Add Token
   Future<Response> fetchUserInfo() async {
-    final response = await Api.instance.dio.post(postUser);
+    final response = await Api.instance.dio.get(postUser);
     return response;
   }
 
   Future<Response> fetchSchoolInfo() async {
-    final response = await Api.instance.dio.post(postSchoolInfo);
+    final response = await Api.instance.dio.get(postSchoolInfo);
     return response;
   }
 
   Future<Response> fetchProposalsList() async {
-    final response = await Api.instance.dio.post(postProposals);
+    final response = await Api.instance.dio.get(postProposals);
     return response;
   }
 

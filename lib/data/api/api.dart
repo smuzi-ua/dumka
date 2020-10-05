@@ -4,9 +4,8 @@ import 'package:dio/dio.dart';
 class Api {
   Dio dio;
   Api._privateConstructor() {
-    // TODO: Put real URL
     final options = BaseOptions(
-      baseUrl: 'https://dumka.com.ua/api',
+      baseUrl: 'http://35.246.234.109:8080',
       connectTimeout: 5000,
       receiveTimeout: 5000,
     );

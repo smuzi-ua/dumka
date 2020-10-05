@@ -1,20 +1,33 @@
 
 // TODO: Make models for working with network
 
-class School {
-  final int id;
-  final String title;
-  final String place;
+import 'package:Dumka/data/model/generic_type.dart';
 
-  School({this.id, this.title, this.place});
+class School extends GenericType {
+  int id;
+  String name;
+  bool display;
 
-  factory School.fromJson(Map<String, dynamic> json) {
+  School({this.id, this.name, this.display});
+
+  School.builder();
+
+  @override
+  School fromJson(Map<String, dynamic> json) {
     return School(
       id: json['id'] as int,
-      title: json['title'] as String,
-      place: json['place'] as String,
+      name: json['name'] as String,
+      display: json['display'] as bool,
     );
   }
+
+  @override
+  Map<String, dynamic> toJson() =>
+      {
+        'id': id,
+        'name': name,
+        'display': display
+      };
 }
 
 class Proposal {
