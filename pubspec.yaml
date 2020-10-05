@@ -20,6 +20,7 @@ dependencies:
 
   dio: ^3.0.10
   flutter_bloc: ^6.0.5
+  shared_preferences: ^0.5.12
 
 
 dev_dependencies:
