@@ -27,6 +27,10 @@ class Texts {
   static const accountNetworks = 'Соціальні мережі';
   static const accountNickname = 'Нікнейм';
   static const accountAdd = 'Додати';
+
+  static const approveConfirmButton = 'Підтвердити';
+  static const approveDeclineButton = 'Відхилити';
+  static const approveDeclineAndReportButton = 'Відхилити та поскаржитись';
 }
 
 /// ui styles
