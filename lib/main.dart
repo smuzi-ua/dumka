@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'screens/splash_screen.dart';
-import 'screens/approve_proposal_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,11 +16,25 @@ class MyApp extends StatelessWidget {
     ]);
     // todo use routes & loading bloc for navigating authed/not authed
     return MaterialApp(
+        builder: (_, child) {
+          return ScrollConfiguration(
+            behavior: RemoveAnnoyingScrollBehaviour(),
+            child: child,
+          );
+        },
         title: Texts.title,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: SplashScreen());
+  }
+}
+
+class RemoveAnnoyingScrollBehaviour extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }

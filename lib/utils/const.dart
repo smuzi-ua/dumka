@@ -7,7 +7,7 @@ class Texts {
   static const splashTitle = 'Dumka ?';
   static const splashSubtitle = 'зв’язок зі школою та її\nобітатєлями';
   static const proposalsText = 'Пропозиції';
-  static const reportsText = 'Скарги';
+  static const reportsText = 'Розмови';
 
   static const aboutTitle = 'Про думку';
   static const settingsTitle = 'Налаштування';

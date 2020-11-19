@@ -1,7 +1,7 @@
 name: Dumka
-description: 'Dumka Project'
+description: 'the Dumka Project'
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -12,12 +12,14 @@ dependencies:
     sdk: flutter
 
 
-\
   # UI
   google_fonts: ^1.1.0
   custom_switch_button: ^0.5.0
   material_design_icons_flutter: ^4.0.5345
   flutter_svg: ^0.19.1
+  md2_tab_indicator: ^1.0.2
+
+
 
 
 dev_dependencies:
@@ -26,7 +28,9 @@ dev_dependencies:
 
 
   lint: ^1.2.0
-#  pedantic: ^1.9.2
+
+
+
 
 flutter:
   uses-material-design: false

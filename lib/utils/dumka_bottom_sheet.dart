@@ -53,8 +53,7 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
   void initState() {
     super.initState();
 
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
+    _animationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
     _curvedAnimation =
         CurvedAnimation(parent: _animationController, curve: Curves.easeOut);
     _animation = Tween<double>(begin: 1.3, end: 0).animate(_curvedAnimation);
@@ -87,9 +86,10 @@ class _DumkaModalSheetState extends State<DumkaModalSheet>
 
     if (details.velocity.pixelsPerSecond.dy < 0) return;
 
+    // todo tf does this do
     if (details.velocity.pixelsPerSecond.dy > 700) {
       final flingVelocity = -details.velocity.pixelsPerSecond.dy / _childHeight;
-      if (_animationController.value > 0.0) {
+      if (_animationController.value > 0) {
         _animationController.fling(velocity: flingVelocity);
       }
     } else if (_animationController.value < 0.5) {

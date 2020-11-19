@@ -1,4 +1,5 @@
 import 'package:Dumka/screens/menu_screens.dart';
+import 'package:Dumka/ui/components.dart';
 import 'package:Dumka/utils/const.dart';
 import 'package:Dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:Dumka/ui/components.dart';
+import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
 class ProposalsScreen extends StatelessWidget {
   void showAddSuggestionWindow(BuildContext c) {
@@ -219,32 +222,74 @@ class ProposalsScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        // https://stackoverflow.com/questions/52592588/bottomappbar-floating-action-button-notch-inset-is-not-transparent
+        extendBody: true,
         backgroundColor: UIConfig.bgColor,
         appBar: AppBar(
+          toolbarHeight: 86,
           elevation: 0,
           backgroundColor: Colors.white,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
+              bottom: Radius.circular(18),
             ),
           ),
           // todo proper tabs & navigation
-          title: Align(
-            alignment: Alignment.centerLeft,
-            child: TabBar(
-              isScrollable: true,
-              labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-              unselectedLabelColor: Colors.grey[500],
-              labelColor: Colors.grey[800],
-              labelStyle: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                      fontSize: 28.0, fontWeight: FontWeight.bold)),
-              indicatorColor: Colors.transparent,
-              // ignore: prefer_const_literals_to_create_immutables
-              tabs: [
-                const Tab(text: Texts.proposalsText),
-                const Tab(text: Texts.reportsText),
-              ],
+          title: Theme(
+            data: ThemeData(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    // height: 68,
+                    child: TabBar(
+                      isScrollable: true,
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+                      unselectedLabelColor: Colors.grey[500],
+                      labelColor: Colors.grey[800],
+                      labelStyle: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.bold)),
+                      indicatorColor: Colors.transparent,
+                      tabs: const [
+                        Tab(text: Texts.proposalsText),
+                        Tab(text: Texts.reportsText),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  SizedBox(
+                    height: 28,
+                    child: TabBar(
+                      isScrollable: true,
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+                      unselectedLabelColor: Colors.grey[500],
+                      labelColor: Colors.deepPurple.shade700,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      //makes it better
+
+                      labelStyle: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500)),
+                      indicator: MD2Indicator(
+                          //it begins here
+                          indicatorHeight: 2.4,
+                          indicatorColor: Colors.deepPurple.shade700,
+                          indicatorSize: MD2IndicatorSize.normal),
+                      tabs: const [
+                        Tab(text: Texts.proposalsText),
+                        Tab(text: Texts.reportsText),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -254,8 +299,12 @@ class ProposalsScreen extends StatelessWidget {
             ReportsWidget(),
           ],
         ),
+
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
+          elevation: 0,
+          focusElevation: 0,
+          highlightElevation: 0,
           backgroundColor: UIConfig.primaryColor,
           onPressed: () {
             showAddSuggestionWindow(context);
@@ -266,8 +315,11 @@ class ProposalsScreen extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
+          elevation: 0,
           shape: const CircularNotchedRectangle(),
           color: Colors.white,
+
+
           child: SizedBox(
             height: 54,
             child: Row(
@@ -300,7 +352,7 @@ class ProposalsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 8),
       itemCount: DemoData.namesOfProposal.length,
       itemBuilder: (BuildContext context, int index) {
         // todo move to model_views & display it using model
@@ -493,8 +545,7 @@ class ReportsWidget extends StatelessWidget {
               style:
                   GoogleFonts.roboto(textStyle: const TextStyle(fontSize: 14)),
             ),
-            const Spacer(
-            ),
+            const Spacer(),
             Container(
               width: 25,
               height: 25,
@@ -508,8 +559,7 @@ class ReportsWidget extends StatelessWidget {
                         TextStyle(fontSize: 12, color: UIConfig.primaryColor)),
               ),
             ),
-            const Spacer(
-            ),
+            const Spacer(),
           ]),
         );
       },
