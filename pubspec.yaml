@@ -1,4 +1,4 @@
-name: Dumka
+name: dumka
 description: 'the Dumka Project'
 
 publish_to: 'none'
@@ -13,10 +13,11 @@ dependencies:
 
 
   # UI
-  google_fonts: ^1.1.0
   custom_switch_button: ^0.5.0
-  material_design_icons_flutter: ^4.0.5345
-  flutter_svg: ^0.19.1
+  material_design_icons_flutter: ^4.0.5755
+
+  google_fonts: ^1.1.1
+  flutter_svg: ^0.19.2+1
   md2_tab_indicator: ^1.0.2
 
 
@@ -27,7 +28,7 @@ dev_dependencies:
     sdk: flutter
 
 
-  lint: ^1.2.0
+  lint: ^1.5.1
 
 
 

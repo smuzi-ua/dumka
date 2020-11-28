@@ -1,21 +1,14 @@
-import 'package:Dumka/screens/menu_screens.dart';
-import 'package:Dumka/utils/const.dart';
-import 'package:Dumka/utils/dumka_bottom_sheet.dart';
+import 'package:dumka/utils/const.dart';
+import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dumka/screens/proposals_screen.dart';
-import 'package:Dumka/utils/const.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:dumka/screens/proposals_screen.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ApproveProposalScreen extends StatelessWidget {
-  static int index;
+  final int index;
 
-  ApproveProposalScreen(int pIndex) {
-    // ignore: prefer_initializing_formals
-    index = pIndex;
-  }
+  const ApproveProposalScreen(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +33,7 @@ class ApproveProposalScreen extends StatelessWidget {
         Container(
           margin: const EdgeInsets.fromLTRB(15, 35.87, 15, 10),
           decoration: BoxDecoration(
-            color: UIConfig.deep_purple_300,
+            color: UIConfig.deepPurple300,
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Column(children: <Widget>[
@@ -66,7 +59,7 @@ class ApproveProposalScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(3),
                     itemCount: 2,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
+                      return SizedBox(
                           width: 50,
                           height: 50,
                           child: Column(children: <Widget>[
@@ -91,7 +84,7 @@ class ApproveProposalScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Container(
+              SizedBox(
                 width: 98,
                 height: 42,
                 child: FlatButton(
@@ -118,7 +111,7 @@ class ApproveProposalScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 98,
                 height: 42,
                 child: FlatButton(
@@ -144,7 +137,7 @@ class ApproveProposalScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 98,
                 height: 42,
                 child: FlatButton(

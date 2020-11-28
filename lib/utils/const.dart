@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 /// demo class for all texts
 class Texts {
   const Texts();
+
   static const title = 'Dumka';
   static const splashTitle = 'Dumka ?';
   static const splashSubtitle = 'зв’язок зі школою та її\nобітатєлями';
@@ -14,6 +15,7 @@ class Texts {
   static const accountTitle = 'Обліковий запис';
 
   static const aboutText = '*тут багато букв про нас*';
+
   // ignore: avoid_escaping_inner_quotes
   static const aboutFeedBack = 'Зворотній зв\'язок';
   static const aboutSupport = 'Підтримати нас';
@@ -40,11 +42,10 @@ class UIConfig {
   /// main color: spinner, fab
   static final primaryColor = Colors.deepPurple[500];
   static final bgColor = Colors.grey[200];
-  static Color purple2 =  const Color(0xAA651FFF);
-  static  Color grey = const Color(0xFFF5F5F5);
-  static  Color purple3 = const Color(0xFF7C4DFF);
-  static  Color deep_purple_300 = const Color(0xFF9575CD);
-
+  static Color purple2 = const Color(0xAA651FFF);
+  static Color grey = const Color(0xFFF5F5F5);
+  static Color purple3 = const Color(0xFF7C4DFF);
+  static Color deepPurple300 = const Color(0xFF9575CD);
 }
 
 /// data placeholders

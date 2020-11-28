@@ -1,13 +1,11 @@
-import 'package:Dumka/screens/menu_screens.dart';
-import 'package:Dumka/ui/components.dart';
-import 'package:Dumka/utils/const.dart';
-import 'package:Dumka/utils/dumka_bottom_sheet.dart';
+import 'package:dumka/components/proposal.dart';
+import 'package:dumka/utils/const.dart';
+import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:Dumka/ui/components.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
 class ProposalsScreen extends StatelessWidget {
@@ -217,352 +215,189 @@ class ProposalsScreen extends StatelessWidget {
         ]));
   }
 
+  final ScrollController scroll = ScrollController();
+
+  // todo show AppBar and BottomBar when changing pages
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        // https://stackoverflow.com/questions/52592588/bottomappbar-floating-action-button-notch-inset-is-not-transparent
         extendBody: true,
         backgroundColor: UIConfig.bgColor,
-        appBar: AppBar(
-          toolbarHeight: 86,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(18),
-            ),
+        body: Stack(children: [
+          TabBarView(
+            children: [
+              ProposalsWidget(scroll),
+              Center(
+                child: Text(
+                  'В розробці',
+                  style: GoogleFonts.roboto(fontSize: 16),
+                ),
+              ),
+            ],
           ),
-          // todo proper tabs & navigation
-          title: Theme(
-            data: ThemeData(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    // height: 68,
-                    child: TabBar(
-                      isScrollable: true,
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-                      unselectedLabelColor: Colors.grey[500],
-                      labelColor: Colors.grey[800],
-                      labelStyle: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                              fontSize: 28, fontWeight: FontWeight.bold)),
-                      indicatorColor: Colors.transparent,
-                      tabs: const [
-                        Tab(text: Texts.proposalsText),
-                        Tab(text: Texts.reportsText),
-                      ],
-                    ),
+          AnimatedBuilder(
+            animation: scroll,
+            builder: (_, child) {
+              try {
+                return TweenAnimationBuilder<double>(
+                  duration: const Duration(milliseconds: 200),
+                  tween: scroll.position.userScrollDirection ==
+                          ScrollDirection.reverse
+                      ? Tween(begin: 94, end: 0)
+                      : Tween(begin: 0, end: 94),
+                  builder: (_, value, __) => Transform.translate(
+                    offset:
+                        Offset(0, -MediaQuery.of(context).size.height + value),
+                    child: child,
                   ),
-                  const SizedBox(height: 2),
-                  SizedBox(
-                    height: 28,
-                    child: TabBar(
-                      isScrollable: true,
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-                      unselectedLabelColor: Colors.grey[500],
-                      labelColor: Colors.deepPurple.shade700,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      //makes it better
-
-                      labelStyle: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                      indicator: MD2Indicator(
-                          //it begins here
-                          indicatorHeight: 2.4,
-                          indicatorColor: Colors.deepPurple.shade700,
-                          indicatorSize: MD2IndicatorSize.normal),
-                      tabs: const [
-                        Tab(text: Texts.proposalsText),
-                        Tab(text: Texts.reportsText),
-                      ],
+                );
+              } catch (_) {
+                return SizedBox(height: 94, child: child);
+              }
+            },
+            child: Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(18),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              // todo proper tabs & navigation
+              child: Theme(
+                data: ThemeData(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      child: TabBar(
+                        isScrollable: true,
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+                        unselectedLabelColor: Colors.grey[500],
+                        labelColor: Colors.grey[800],
+                        labelStyle: GoogleFonts.montserrat(
+                            textStyle: const TextStyle(
+                                fontSize: 28, fontWeight: FontWeight.bold)),
+                        indicatorColor: Colors.transparent,
+                        tabs: const [
+                          Tab(text: Texts.proposalsText),
+                          Tab(text: Texts.reportsText),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 28,
+                      child: TabBar(
+                        isScrollable: true,
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+                        unselectedLabelColor: Colors.grey[500],
+                        labelColor: Colors.deepPurple.shade700,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        labelStyle: GoogleFonts.montserrat(
+                            textStyle: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w500)),
+                        indicator: MD2Indicator(
+                            indicatorHeight: 2.4,
+                            indicatorColor: Colors.deepPurple.shade700,
+                            indicatorSize: MD2IndicatorSize.normal),
+                        tabs: const [
+                          Tab(text: Texts.proposalsText),
+                          Tab(text: Texts.reportsText),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        body: TabBarView(
-          children: [
-            ProposalsWidget(),
-            ReportsWidget(),
-          ],
-        ),
-
+        ]),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          elevation: 0,
-          focusElevation: 0,
-          highlightElevation: 0,
-          backgroundColor: UIConfig.primaryColor,
-          onPressed: () {
-            showAddSuggestionWindow(context);
+        floatingActionButton: AnimatedBuilder(
+          animation: scroll,
+          builder: (_, child) {
+            try {
+              return TweenAnimationBuilder<double>(
+                duration: const Duration(milliseconds: 200),
+                tween: scroll.position.userScrollDirection ==
+                        ScrollDirection.reverse
+                    ? Tween(begin: 1, end: 0)
+                    : Tween(begin: 0, end: 1),
+                builder: (_, value, __) => Transform.scale(
+                  scale: value,
+                  child: child,
+                ),
+              );
+            } catch (_) {
+              return child;
+            }
           },
-          child: const Icon(
-            MdiIcons.plus,
-            color: Colors.white,
+          child: FloatingActionButton(
+            elevation: 0,
+            focusElevation: 0,
+            highlightElevation: 0,
+            backgroundColor: UIConfig.primaryColor,
+            onPressed: () {
+              showAddSuggestionWindow(context);
+            },
+            child: const Icon(
+              MdiIcons.plus,
+              color: Colors.white,
+            ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          elevation: 0,
-          shape: const CircularNotchedRectangle(),
-          color: Colors.white,
-
-
-          child: SizedBox(
-            height: 54,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: const Icon(MdiIcons.menu),
-                  color: Colors.grey,
-                  onPressed: () {
-                    showSettingsWindow(context);
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(MdiIcons.magnify),
-                  color: Colors.grey,
-                  onPressed: () {
-                    // todo Search
-                  },
-                ),
-              ],
+        bottomNavigationBar: AnimatedBuilder(
+          animation: scroll,
+          builder: (_, child) {
+            try {
+              return AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  height: scroll.position.userScrollDirection ==
+                          ScrollDirection.reverse
+                      ? 0
+                      : 54,
+                  child: child);
+            } catch (_) {
+              return child;
+            }
+          },
+          child: BottomAppBar(
+            elevation: 0,
+            shape: const CircularNotchedRectangle(),
+            color: Colors.white,
+            child: SizedBox(
+              height: 54,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: const Icon(MdiIcons.menu),
+                    color: Colors.grey,
+                    onPressed: () {
+                      showSettingsWindow(context);
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(MdiIcons.magnify),
+                    color: Colors.grey,
+                    onPressed: () {
+                      // todo Search
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class ProposalsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 8),
-      itemCount: DemoData.namesOfProposal.length,
-      itemBuilder: (BuildContext context, int index) {
-        // todo move to model_views & display it using model
-        return Container(
-          height: 60,
-          margin: const EdgeInsets.symmetric(vertical: 6),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.6, color: Colors.grey[300]),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Center(child: SvgPicture.asset('assets/brain.svg')),
-              ),
-              const SizedBox(
-                width: 18.0,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    DemoData.namesOfProposal[index],
-                    style: GoogleFonts.roboto(
-                        textStyle: const TextStyle(fontSize: 14)),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 44,
-                          height: 22,
-                          child: FlatButton(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.deepPurple[400]),
-                              borderRadius: BorderRadius.circular(6.0),
-                            ),
-                            padding: const EdgeInsets.all(1),
-                            onPressed: () {},
-                            child: Row(
-                              children: <Widget>[
-                                const Spacer(),
-                                Icon(
-                                  MdiIcons.triangle,
-                                  color: Colors.deepPurple[400],
-                                  size: 11,
-                                ),
-                                const Spacer(),
-                                Text(
-                                  DemoData.numberOfComments[index].toString(),
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(fontSize: 12)),
-                                ),
-                                const Spacer(
-                                  flex: 2,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          width: 44,
-                          height: 22,
-                          child: FlatButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            color: Colors.deepOrange[500],
-                            padding: const EdgeInsets.all(1),
-                            onPressed: () {},
-                            child: Row(
-                              children: <Widget>[
-                                const Spacer(),
-                                Transform.rotate(
-                                  angle: 180 * 3.14 / 180,
-                                  child: const Icon(
-                                    MdiIcons.triangle,
-                                    color: Colors.white,
-                                    size: 11,
-                                  ),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  DemoData.numberOfComments[index].toString(),
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                          fontSize: 12, color: Colors.white)),
-                                ),
-                                const Spacer(
-                                  flex: 2,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Spacer(
-                          flex: 13,
-                        ),
-                        SizedBox(
-                          width: 44,
-                          height: 22,
-                          child: FlatButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            padding: const EdgeInsets.all(1),
-                            color: Colors.grey[300],
-                            onPressed: () {
-                              // todo Comments
-                            },
-                            child: Row(
-                              children: <Widget>[
-                                const Spacer(),
-                                Icon(
-                                  MdiIcons.commentMultipleOutline,
-                                  color: UIConfig.primaryColor,
-                                  size: 12,
-                                ),
-                                const Spacer(),
-                                Text(
-                                  DemoData.numberOfComments[index].toString(),
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: UIConfig.primaryColor)),
-                                ),
-                                const Spacer(
-                                  flex: 2,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const Spacer(
-                          flex: 2,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-class ReportsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(14),
-      itemCount: DemoData.namesOfProposal.length,
-      itemBuilder: (BuildContext context, int index) {
-        // todo move to model_views & display it using model
-        return Container(
-          height: 60,
-          margin: const EdgeInsets.symmetric(vertical: 6),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Row(children: <Widget>[
-            Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                border: Border.all(width: 0.6, color: Colors.grey[300]),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Center(child: SvgPicture.asset('assets/brain.svg')),
-            ),
-            const SizedBox(
-              width: 18.0,
-            ),
-            Text(
-              DemoData.namesOfProposal[index],
-              style:
-                  GoogleFonts.roboto(textStyle: const TextStyle(fontSize: 14)),
-            ),
-            const Spacer(),
-            Container(
-              width: 25,
-              height: 25,
-              decoration: BoxDecoration(
-                  color: Colors.grey[300], shape: BoxShape.circle),
-              alignment: Alignment.center,
-              child: Text(
-                DemoData.numberOfComments[index].toString(),
-                style: GoogleFonts.poppins(
-                    textStyle:
-                        TextStyle(fontSize: 12, color: UIConfig.primaryColor)),
-              ),
-            ),
-            const Spacer(),
-          ]),
-        );
-      },
     );
   }
 }

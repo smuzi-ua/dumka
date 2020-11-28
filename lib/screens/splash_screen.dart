@@ -1,5 +1,5 @@
-import 'package:Dumka/screens/proposals_screen.dart';
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/screens/proposals_screen.dart';
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
