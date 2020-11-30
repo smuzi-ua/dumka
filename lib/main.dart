@@ -1,4 +1,4 @@
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,11 +16,25 @@ class MyApp extends StatelessWidget {
     ]);
     // todo use routes & loading bloc for navigating authed/not authed
     return MaterialApp(
+        builder: (_, child) {
+          return ScrollConfiguration(
+            behavior: RemoveAnnoyingScrollBehaviour(),
+            child: child,
+          );
+        },
         title: Texts.title,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: SplashScreen());
+  }
+}
+
+class RemoveAnnoyingScrollBehaviour extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }

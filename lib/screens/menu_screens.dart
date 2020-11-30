@@ -1,4 +1,4 @@
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -294,12 +294,12 @@ class AboutWidget extends StatelessWidget {
           Text(Texts.aboutFeedBack,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const Spacer(),
-          Container(
+          SizedBox(
             width: 205.2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: 42,
                   height: 42,
                   child: FlatButton(
@@ -317,7 +317,7 @@ class AboutWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 42,
                   height: 42,
                   child: FlatButton(
@@ -335,7 +335,7 @@ class AboutWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 42,
                   height: 42,
                   child: FlatButton(
@@ -353,7 +353,7 @@ class AboutWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 42,
                   height: 42,
                   child: FlatButton(
@@ -378,7 +378,7 @@ class AboutWidget extends StatelessWidget {
           Text(Texts.aboutSupport,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const Spacer(),
-          Container(
+          SizedBox(
             width: 42,
             height: 42,
             child: FlatButton(

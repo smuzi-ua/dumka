@@ -1,3 +1,5 @@
+import 'package:dumka/screens/proposals_screen.dart';
+import 'package:dumka/utils/const.dart';
 import 'dart:developer';
 
 import 'package:Dumka/bloc/school/school_bloc.dart';
@@ -103,3 +105,59 @@ class SchoolFetcher extends StatelessWidget {
     );
   }
 }
+
+// class SplashScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     Future.delayed(const Duration(seconds: 1), () {
+//       Navigator.pushReplacement(
+//           context,
+//           MaterialPageRoute(
+//             builder: (context) => ProposalsScreen(),
+//           ));
+//     });
+//
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: Stack(
+//         children: <Widget>[
+//           SizedBox(
+//             width: double.infinity,
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: <Widget>[
+//                 SvgPicture.asset('assets/splash.svg'),
+//                 const SizedBox(height: 32),
+//                 Text(
+//                   Texts.splashTitle,
+//                   style: TextStyle(color: Colors.grey[900], fontSize: 32.0),
+//                 ),
+//                 const SizedBox(height: 16),
+//                 Text(
+//                   Texts.splashSubtitle,
+//                   textAlign: TextAlign.center,
+//                   style: TextStyle(color: Colors.grey[700], fontSize: 18.0),
+//                 )
+//               ],
+//             ),
+//           ),
+//           Align(
+//             alignment: Alignment.bottomCenter,
+//             child: Container(
+//               margin: const EdgeInsets.only(bottom: 64),
+//               child: SizedBox(
+//                 height: 22,
+//                 width: 22,
+//                 child: CircularProgressIndicator(
+//                   strokeWidth: 3,
+//                   valueColor:
+//                   AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
+//                 ),
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

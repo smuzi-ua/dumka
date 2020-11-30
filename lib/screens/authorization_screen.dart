@@ -1,4 +1,4 @@
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -92,7 +92,7 @@ class AuthorizationState extends State<AuthorizationScreen> {
                           labelText: 'Призвіще Імя',
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 143.06,
                         child: FlatButton(
                           onPressed: () {},
