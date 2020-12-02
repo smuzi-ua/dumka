@@ -1,12 +1,10 @@
-import 'package:dumka/screens/proposals_screen.dart';
-import 'package:dumka/utils/const.dart';
 import 'dart:developer';
 
-import 'package:Dumka/bloc/school/school_bloc.dart';
-import 'package:Dumka/bloc/school/school_event.dart';
-import 'package:Dumka/bloc/school/school_state.dart';
-import 'package:Dumka/screens/proposals_screen.dart';
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/bloc/school/school_bloc.dart';
+import 'package:dumka/bloc/school/school_event.dart';
+import 'package:dumka/bloc/school/school_state.dart';
+import 'package:dumka/screens/proposals_screen.dart';
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +40,7 @@ class SplashWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Container(
+        SizedBox(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -91,11 +89,11 @@ class SchoolFetcher extends StatelessWidget {
       builder: (BuildContext context, SchoolListState state) {
         log(state.toString());
         if (state is SchoolListEmptyState) {
-          return const Center(child: Text("Empty Schools!"));
+          return const Center(child: Text('Empty Schools!'));
         } else if (state is SchoolListErrorState) {
           return const Center(child: Text('Error!'));
         } else if (state is SchoolListFetchedState) {
-          return Center(child: Text("Schools: ${state.schools}"));
+          return Center(child: Text('Schools: ${state.schools}'));
         } else if (state is SchoolListFetchingState) {
           return const Center(child: Text('Loading'));
         } else {

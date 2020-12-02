@@ -1,7 +1,6 @@
 
 // TODO: Make models for working with network
 
-import 'package:Dumka/data/model/generic_type.dart';
 
 class School {
   int id;

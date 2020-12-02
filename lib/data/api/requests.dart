@@ -1,8 +1,7 @@
 
-import 'dart:convert';
 
-import 'package:Dumka/data/api/api.dart';
-import 'package:Dumka/data/model/models.dart';
+import 'package:dumka/data/api/api.dart';
+import 'package:dumka/data/model/models.dart';
 import 'package:dio/dio.dart';
 
 // Dio Docs: https://github.com/flutterchina/dio/blob/master/README.md

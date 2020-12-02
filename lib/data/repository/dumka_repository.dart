@@ -1,9 +1,8 @@
-import 'dart:convert';
 
-import 'package:Dumka/data/api/requests.dart';
-import 'package:Dumka/data/model/models.dart';
+import 'package:dumka/data/api/requests.dart';
+import 'package:dumka/data/model/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Dumka/utils/const.dart';
+import 'package:dumka/utils/const.dart';
 
 
 class DumkaRepository {
@@ -15,7 +14,7 @@ class DumkaRepository {
 
   Future<void> fetchProposalsList() async {
     final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString(Prefs.token_pref) ?? '';
+    final token = prefs.getString(Prefs.tokenPref) ?? '';
 
     final response = _requests.fetchProposalsList(token);
     return response;

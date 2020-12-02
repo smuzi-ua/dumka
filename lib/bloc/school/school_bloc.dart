@@ -1,7 +1,7 @@
-import 'package:Dumka/bloc/school/school_event.dart';
-import 'package:Dumka/bloc/school/school_state.dart';
-import 'package:Dumka/data/model/models.dart';
-import 'package:Dumka/data/repository/dumka_repository.dart';
+import 'package:dumka/bloc/school/school_event.dart';
+import 'package:dumka/bloc/school/school_state.dart';
+import 'package:dumka/data/model/models.dart';
+import 'package:dumka/data/repository/dumka_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // https://medium.com/flutter-community/implementing-bloc-pattern-using-flutter-bloc-62a62e0319b5
