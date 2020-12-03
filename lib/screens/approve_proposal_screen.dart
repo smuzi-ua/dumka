@@ -2,7 +2,6 @@ import 'package:dumka/utils/const.dart';
 import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dumka/screens/proposals_screen.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ApproveProposalScreen extends StatelessWidget {
@@ -25,11 +24,9 @@ class ApproveProposalScreen extends StatelessWidget {
           ),
           title: Align(
             child: Text(Texts.proposalsText,
-                style: TextStyle(fontSize: 28.0, color: Colors.grey[800])
-            ),
+                style: TextStyle(fontSize: 28.0, color: Colors.grey[800])),
           )),
       body: Column(children: <Widget>[
-
         Container(
           margin: const EdgeInsets.fromLTRB(15, 35.87, 15, 10),
           decoration: BoxDecoration(
@@ -49,7 +46,7 @@ class ApproveProposalScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.grey[800], fontSize: 18.0),
               ),
             ),
-            Row( children: <Widget>[
+            Row(children: <Widget>[
               Container(
                   alignment: Alignment.topLeft,
                   height: 60,
@@ -63,14 +60,12 @@ class ApproveProposalScreen extends StatelessWidget {
                           width: 50,
                           height: 50,
                           child: Column(children: <Widget>[
-                            const Icon(
-                                MdiIcons.fileOutline,
-                                color: Colors.white,
-                                size: 40
-                            ),
+                            const Icon(MdiIcons.fileOutline,
+                                color: Colors.white, size: 40),
                             Text(
                               'file $index',
-                              style: const TextStyle(fontSize: 12, color: Colors.white),
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.white),
                             ),
                           ]));
                     },
@@ -98,7 +93,6 @@ class ApproveProposalScreen extends StatelessWidget {
                     // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
                       const Spacer(),
-
                       const Spacer(),
                       const Text(
                         Texts.approveConfirmButton,
@@ -163,7 +157,8 @@ class ApproveProposalScreen extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProposalsScreen()),
+            MaterialPageRoute(
+                builder: (context) => const Text('something is wrong')),
           );
         },
         child: const Icon(

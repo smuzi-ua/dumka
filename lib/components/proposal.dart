@@ -13,7 +13,7 @@ class ProposalsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: scroll,
-      padding: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 100),
+      padding: const EdgeInsets.only(bottom: 60, left: 16, right: 16, top: 108),
       itemCount: DemoData.namesOfProposal.length,
       itemBuilder: (BuildContext context, int index) {
         // todo move to model_views & display it using model

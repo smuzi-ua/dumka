@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:dumka/bloc/school/school_bloc.dart';
 import 'package:dumka/bloc/school/school_event.dart';
 import 'package:dumka/bloc/school/school_state.dart';
-import 'package:dumka/screens/proposals_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +23,13 @@ class SplashScreen extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ProposalsScreen(),
+            builder: (context) => const SizedBox(
+              child: Text('BYE!'),
+            ),
           ));
     });
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SchoolFetcher()
-    );
+    return Scaffold(backgroundColor: Colors.white, body: SchoolFetcher());
   }
 }
 
@@ -70,7 +68,7 @@ class SplashWidget extends StatelessWidget {
               child: CircularProgressIndicator(
                 strokeWidth: 3,
                 valueColor:
-                AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
+                    AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
               ),
             ),
           ),
