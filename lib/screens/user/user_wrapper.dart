@@ -1,4 +1,3 @@
-import 'package:dumka/components/proposal.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -222,45 +221,56 @@ class _UserWrapperState extends State<UserWrapper>
 
   ScrollController _scroll;
   TabController _mainTabs;
-  TabController _secondaryTabs;
+  TabController _secondaryTabsMain;
+  TabController _secondaryTabsSecond;
   PageController _pager;
+  TabController _submenuTabs;
 
-  // todo do that properly + listen to tab clicks
   @override
   void initState() {
     _mainTabs = TabController(length: 2, vsync: this);
-    _secondaryTabs = TabController(length: 3, vsync: this);
-    _pager = PageController(initialPage: 0);
+    _secondaryTabsMain = TabController(length: 3, vsync: this);
+    _secondaryTabsSecond = TabController(length: 1, vsync: this);
+    _pager = PageController();
+    _submenuTabs = TabController(vsync: this, length: 2);
+    _scroll = ScrollController();
 
     _pager.addListener(() {
-      print(_pager.page);
       if (_pager.page < 1) {
-        _secondaryTabs.index = 0;
-        _secondaryTabs.offset = _pager.page;
+        if(!_secondaryTabsMain.indexIsChanging){
+          _secondaryTabsMain.index = 0;
+          _secondaryTabsMain.offset = _pager.page;
+        }
+
+        _submenuTabs.index = 0;
+
         return;
       }
+
       if (_pager.page < 2) {
-        _secondaryTabs.index = 1;
-        _secondaryTabs.offset = _pager.page - 1;
+        if(!_secondaryTabsMain.indexIsChanging){
+          _secondaryTabsMain.index = 1;
+          _secondaryTabsMain.offset = _pager.page - 1;
+        }
+
+        _submenuTabs.index = 0;
+
         return;
       }
 
       if (_pager.page < 3) {
-        _mainTabs.index = 0;
-        _mainTabs.offset = 0;
+        if (!_mainTabs.indexIsChanging) {
+          _mainTabs.index = _pager.page - 2 > 0.5 ? 1 : 0;
+          _mainTabs.offset = _pager.page - 2;
+        }
 
-        _secondaryTabs.index = 2;
-        _secondaryTabs.offset = _pager.page - 2;
-      }
+        _secondaryTabsMain.index = 2;
+        _submenuTabs.index = _pager.page - 2 > 0.5 ? 1 : 0;
 
-      if (_pager.page < 4) {
-        _mainTabs.index = 1;
-        _mainTabs.offset = _pager.page - 3;
+        return;
       }
     });
 
-
-    // _scroll = ScrollController();
 
     super.initState();
   }
@@ -383,6 +393,13 @@ class _UserWrapperState extends State<UserWrapper>
                       isScrollable: true,
                       labelPadding: const EdgeInsets.symmetric(horizontal: 5),
                       unselectedLabelColor: Colors.grey[500],
+                      onTap: (i) {
+                        // todo fix weird logic when clicking on the second tab directly
+
+                        _pager.animateToPage(i == 0 ? 2 : 3,
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.linear);
+                      },
                       labelColor: Colors.grey[800],
                       labelStyle: GoogleFonts.montserrat(
                           textStyle: const TextStyle(
@@ -396,24 +413,63 @@ class _UserWrapperState extends State<UserWrapper>
                   ),
                   SizedBox(
                     height: 30,
-                    child: TabBar(
-                      controller: _secondaryTabs,
-                      isScrollable: true,
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-                      unselectedLabelColor: Colors.grey[500],
-                      labelColor: Colors.deepPurple.shade700,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      labelStyle: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
-                      indicator: MD2Indicator(
-                          indicatorHeight: 2.4,
-                          indicatorColor: Colors.deepPurple.shade700,
-                          indicatorSize: MD2IndicatorSize.normal),
-                      tabs: const [
-                        Tab(text: 'Активні'),
-                        Tab(text: 'В процесі'),
-                        Tab(text: 'Архів'),
+                    child: TabBarView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      controller: _submenuTabs,
+                      children: [
+                        TabBar(
+                          controller: _secondaryTabsMain,
+                          isScrollable: true,
+                          labelPadding:
+                              const EdgeInsets.symmetric(horizontal: 5),
+                          unselectedLabelColor: Colors.grey[500],
+                          labelColor: Colors.deepPurple.shade700,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          labelStyle: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500)),
+                          onTap: (i) {
+                            // if(i == 0){
+                            //   print('123123');
+                            //   _pager.animateToPage(2, duration: Duration(milliseconds: 300), curve: Curves.linear);
+                            //
+                            // }
+                            // print('tap!!!');
+
+                              _pager.animateToPage(i,
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.linear);
+
+                          },
+                          indicator: MD2Indicator(
+                              indicatorHeight: 2.4,
+                              indicatorColor: Colors.deepPurple.shade700,
+                              indicatorSize: MD2IndicatorSize.normal),
+                          tabs: const [
+                            Tab(text: 'Активні'),
+                            Tab(text: 'В процесі'),
+                            Tab(text: 'Архів'),
+                          ],
+                        ),
+                        TabBar(
+                          controller: _secondaryTabsSecond,
+                          isScrollable: true,
+                          labelPadding:
+                              const EdgeInsets.symmetric(horizontal: 5),
+                          unselectedLabelColor: Colors.grey[500],
+                          labelColor: Colors.deepPurple.shade700,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          labelStyle: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500)),
+                          indicator: MD2Indicator(
+                              indicatorHeight: 2.4,
+                              indicatorColor: Colors.deepPurple.shade700,
+                              indicatorSize: MD2IndicatorSize.normal),
+                          tabs: const [
+                            Tab(text: 'Всі'),
+                          ],
+                        ),
                       ],
                     ),
                   ),
