@@ -1,3 +1,5 @@
+import 'package:dumka/screens/user/add_suggestion_widget.dart';
+import 'package:dumka/screens/user/user_settings_widget.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -13,211 +15,6 @@ class UserWrapper extends StatefulWidget {
 
 class _UserWrapperState extends State<UserWrapper>
     with TickerProviderStateMixin {
-  void showAddSuggestionWindow(BuildContext c) {
-    DumkaModalSheet.show(
-        context: c,
-        child: Container(
-          alignment: Alignment.bottomCenter,
-          height: 500,
-          child: SingleChildScrollView(
-              child: Container(
-            constraints: const BoxConstraints(maxWidth: 300),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 40),
-                  child: Text(
-                    'Додавання нової пропозиції',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Тема',
-                    ),
-                  ),
-                ),
-                Stack(
-                  alignment: AlignmentDirectional.topEnd,
-                  children: <Widget>[
-                    const TextField(
-                      textAlign: TextAlign.left,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Текст',
-                      ),
-                      maxLines: 100,
-                      minLines: 5,
-                    ),
-                    FlatButton(
-                      onPressed: () {},
-                      child: const Icon(
-                        MdiIcons.paperclip,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(40.0),
-                  child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        minHeight: 44,
-                        minWidth: 179,
-                      ),
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
-                        onPressed: () {},
-                        color: UIConfig.purple2,
-                        textColor: Colors.white,
-                        child: const Text(
-                          'Додати пропозицію',
-                        ),
-                      )),
-                )
-              ],
-            ),
-          )), // This trailing comma makes auto-formatting nicer for build methods.
-        ));
-  }
-
-  void showSettingsWindow(BuildContext context) {
-    DumkaModalSheet.show(
-        context: context,
-        child: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 59.0, 0, 8),
-            child: Container(
-              width: 68,
-              height: 68,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                      'https://googleflutter.com/sample_image.jpg'),
-                  //fit: BoxFit.fill
-                ),
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 2.62),
-            child: Text(
-              "Ім'я Прізвище",
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(9.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: UIConfig.grey,
-                  borderRadius: const BorderRadius.all(Radius.circular(15.0))),
-              child: InkWell(
-                onTap: () {},
-                child: Row(
-                  children: <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.only(left: 12.0),
-                      child: Text('Обліковий запис'),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          icon: const Icon(MdiIcons.accountCircle),
-                          onPressed: () {
-                            //do nothing
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(9.0),
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))),
-              child: Row(
-                children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Text('Налаштування'),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        icon: const Icon(MdiIcons.cog),
-                        onPressed: () {
-                          //do nothing
-                        },
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(9.0),
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))),
-              child: Row(
-                children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Text('Про Думку'),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        icon: const Icon(MdiIcons.message),
-                        onPressed: () {
-                          //do nothing
-                        },
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 3.84, 0, 21.84),
-            child: FlatButton(
-              onPressed: () {},
-              color: Colors.grey,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-              ),
-              child: const Text('Вийти'),
-            ),
-          ),
-          const Text(
-            'Dumka for Android, v 1.0',
-            style: TextStyle(fontSize: 11),
-          ),
-          const Text(
-            '2020',
-            style: TextStyle(fontSize: 10),
-          ),
-        ]));
-  }
 
   ScrollController _scroll;
   TabController _mainTabs;
@@ -562,5 +359,18 @@ class _UserWrapperState extends State<UserWrapper>
         ),
       ),
     );
+  }
+
+  void showAddSuggestionWindow(BuildContext c) {
+    DumkaModalSheet.show(
+        context: c,
+        child: AddSuggestionWidget()
+    );
+  }
+
+  void showSettingsWindow(BuildContext context) {
+    DumkaModalSheet.show(
+        context: context,
+        child: UserSettingsWidget());
   }
 }
