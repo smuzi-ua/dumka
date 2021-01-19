@@ -15,7 +15,6 @@ class UserWrapper extends StatefulWidget {
 
 class _UserWrapperState extends State<UserWrapper>
     with TickerProviderStateMixin {
-
   ScrollController _scroll;
   TabController _mainTabs;
   TabController _secondaryTabsMain;
@@ -34,7 +33,7 @@ class _UserWrapperState extends State<UserWrapper>
 
     _pager.addListener(() {
       if (_pager.page < 1) {
-        if(!_secondaryTabsMain.indexIsChanging){
+        if (!_secondaryTabsMain.indexIsChanging) {
           _secondaryTabsMain.index = 0;
           _secondaryTabsMain.offset = _pager.page;
         }
@@ -45,7 +44,7 @@ class _UserWrapperState extends State<UserWrapper>
       }
 
       if (_pager.page < 2) {
-        if(!_secondaryTabsMain.indexIsChanging){
+        if (!_secondaryTabsMain.indexIsChanging) {
           _secondaryTabsMain.index = 1;
           _secondaryTabsMain.offset = _pager.page - 1;
         }
@@ -68,7 +67,6 @@ class _UserWrapperState extends State<UserWrapper>
       }
     });
 
-
     super.initState();
   }
 
@@ -81,11 +79,32 @@ class _UserWrapperState extends State<UserWrapper>
         PageView(
           controller: _pager,
           children: [
-            Center(
-              child: Text(
-                '1',
-                style: GoogleFonts.roboto(fontSize: 16),
-              ),
+            // Center(
+            //   child: Text(
+            //     '1',
+            //     style: GoogleFonts.roboto(fontSize: 16),
+            //   ),
+            // ),
+            ListView(
+              controller: _scroll,
+              padding: const EdgeInsets.symmetric(vertical: 120),
+              children: [
+                Container(
+                  height: 400,
+                  color: Colors.red,
+                  width: double.infinity,
+                ),
+                Container(
+                  height: 400,
+                  color: Colors.blue,
+                  width: double.infinity,
+                ),
+                Container(
+                  height: 400,
+                  color: Colors.green,
+                  width: double.infinity,
+                ),
+              ],
             ),
             Center(
               child: Text(
@@ -151,8 +170,8 @@ class _UserWrapperState extends State<UserWrapper>
                   duration: const Duration(milliseconds: 200),
                   tween: _scroll.position.userScrollDirection ==
                           ScrollDirection.reverse
-                      ? Tween(begin: 104, end: 0)
-                      : Tween(begin: 0, end: 104),
+                      ? Tween(begin: 112, end: 0)
+                      : Tween(begin: 0, end: 112),
                   builder: (_, value, __) {
                     return Transform.translate(
                       offset: Offset(
@@ -233,10 +252,9 @@ class _UserWrapperState extends State<UserWrapper>
                             // }
                             // print('tap!!!');
 
-                              _pager.animateToPage(i,
-                                  duration: const Duration(milliseconds: 200),
-                                  curve: Curves.linear);
-
+                            _pager.animateToPage(i,
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.linear);
                           },
                           indicator: MD2Indicator(
                               indicatorHeight: 2.4,
@@ -362,15 +380,10 @@ class _UserWrapperState extends State<UserWrapper>
   }
 
   void showAddSuggestionWindow(BuildContext c) {
-    DumkaModalSheet.show(
-        context: c,
-        child: AddSuggestionWidget()
-    );
+    DumkaModalSheet.show(context: c, child: AddSuggestionWidget());
   }
 
   void showSettingsWindow(BuildContext context) {
-    DumkaModalSheet.show(
-        context: context,
-        child: UserSettingsWidget());
+    DumkaModalSheet.show(context: context, child: UserSettingsWidget());
   }
 }

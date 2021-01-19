@@ -1,16 +1,14 @@
+import 'package:dumka/bloc/school/school_bloc.dart';
+import 'package:dumka/bloc/school/school_state.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:dumka/bloc/school/school_bloc.dart';
-import 'package:dumka/bloc/school/school_event.dart';
-import 'package:dumka/bloc/school/school_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'authorization_screen.dart';
-
 
 class InitScreen extends StatelessWidget {
   // Create the initialization Future outside of `build`:
@@ -48,11 +46,9 @@ class InitScreen extends StatelessWidget {
           ));
     });
   }
-
 }
 
 class SplashScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +71,7 @@ class SplashScreen extends StatelessWidget {
                   Texts.splashSubtitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey[700], fontSize: 18.0),
-                )
+                ),
               ],
             ),
           ),
