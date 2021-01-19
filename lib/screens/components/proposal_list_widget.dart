@@ -15,7 +15,7 @@ class ProposalsListWidget extends StatelessWidget {
       itemCount: DemoData.namesOfProposal.length,
       itemBuilder: (BuildContext context, int index) {
         // todo move to model_views & display it using model
-        return ProposalsWidget('Text', 10, 1, 5);
+        return const ProposalsWidget('Text', 10, 1, 5);
       },
     );
   }
