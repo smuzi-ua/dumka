@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+class Prefs {
+  static const tokenPref = 'token';
+}
+
 /// demo class for all texts
 class Texts {
   const Texts();

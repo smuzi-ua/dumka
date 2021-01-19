@@ -1,10 +1,15 @@
-import 'package:dumka/screens/proposals_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:dumka/bloc/school/school_bloc.dart';
+import 'package:dumka/bloc/school/school_event.dart';
+import 'package:dumka/bloc/school/school_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'authorization_screen.dart';
 
 
 class InitScreen extends StatelessWidget {
@@ -39,7 +44,7 @@ class InitScreen extends StatelessWidget {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ProposalsScreen(),
+            builder: (context) => AuthorizationScreen(),
           ));
     });
   }
@@ -91,6 +96,54 @@ class SplashScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+var _schoolBloc = SchoolBloc();
+//
+// class SplashScreen extends StatelessWidget {
+//   SplashScreen() {
+//     // Make request
+//     _schoolBloc.add(SchoolListFetchEvent());
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     Future.delayed(const Duration(seconds: 4), () {
+//       Navigator.pushReplacement(
+//           context,
+//           MaterialPageRoute(
+//             builder: (context) => const SizedBox(
+//               child: Text('BYE!'),
+//             ),
+//           ));
+//     });
+//
+//     return Scaffold(backgroundColor: Colors.white, body: SchoolFetcher());
+//   }
+// }
+
+// Exmaple of BLoC
+class SchoolFetcher extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SchoolBloc, SchoolListState>(
+      cubit: _schoolBloc,
+      builder: (BuildContext context, SchoolListState state) {
+        //log(state.toString());
+        if (state is SchoolListEmptyState) {
+          return const Center(child: Text('Empty Schools!'));
+        } else if (state is SchoolListErrorState) {
+          return const Center(child: Text('Error!'));
+        } else if (state is SchoolListFetchedState) {
+          return Center(child: Text('Schools: ${state.schools}'));
+        } else if (state is SchoolListFetchingState) {
+          return const Center(child: Text('Loading'));
+        } else {
+          return const Center(child: Text('Unknown'));
+        }
+      },
     );
   }
 }
