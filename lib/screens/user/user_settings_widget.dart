@@ -9,7 +9,7 @@ class UserSettingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       Padding(
-        padding: const EdgeInsets.fromLTRB(0, 59.0, 0, 8),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Container(
           width: 68,
           height: 68,
@@ -135,5 +135,4 @@ class UserSettingsWidget extends StatelessWidget {
       ),
     ]);
   }
-
 }

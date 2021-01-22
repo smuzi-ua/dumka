@@ -1,9 +1,10 @@
+import 'package:dumka/screens/components/bottom_sheet.dart';
 import 'package:dumka/screens/proposal/proposal_settings_widget.dart';
 import 'package:dumka/utils/const.dart';
-import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 import 'proposal_body_widget.dart';
 
 class ApproveProposalScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class ApproveProposalScreen extends StatelessWidget {
                 icon: const Icon(MdiIcons.menu),
                 color: Colors.grey,
                 onPressed: () {
-                  showSettingsWindow(context);
+                  // showSettingsWindow(context);
                 },
               ),
             ],
@@ -66,10 +67,7 @@ class ApproveProposalScreen extends StatelessWidget {
     );
   }
 
-  void showSettingsWindow(BuildContext context) {
-    DumkaModalSheet.show(
-        context: context,
-        child: ProposalsSettingsWidget()
-    );
-  }
+  // void showSettingsWindow(BuildContext context) {
+  //   DumkaBottomSheet.show(context, ProposalsSettingsWidget());
+  // }
 }

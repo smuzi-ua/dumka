@@ -1,7 +1,7 @@
+import 'package:dumka/screens/components/bottom_sheet.dart';
 import 'package:dumka/screens/user/add_suggestion_widget.dart';
 import 'package:dumka/screens/user/user_settings_widget.dart';
 import 'package:dumka/utils/const.dart';
-import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -325,7 +325,7 @@ class _UserWrapperState extends State<UserWrapper>
           highlightElevation: 0,
           backgroundColor: UIConfig.primaryColor,
           onPressed: () {
-            showAddSuggestionWindow(context);
+            DumkaBottomSheet.show(context, AddSuggestionWidget());
           },
           child: const Icon(
             MdiIcons.plus,
@@ -361,7 +361,7 @@ class _UserWrapperState extends State<UserWrapper>
                   icon: const Icon(MdiIcons.menu),
                   color: Colors.grey,
                   onPressed: () {
-                    showSettingsWindow(context);
+                    DumkaBottomSheet.show(context, UserSettingsWidget());
                   },
                 ),
                 IconButton(
@@ -377,13 +377,5 @@ class _UserWrapperState extends State<UserWrapper>
         ),
       ),
     );
-  }
-
-  void showAddSuggestionWindow(BuildContext c) {
-    DumkaModalSheet.show(context: c, child: AddSuggestionWidget());
-  }
-
-  void showSettingsWindow(BuildContext context) {
-    DumkaModalSheet.show(context: context, child: UserSettingsWidget());
   }
 }
