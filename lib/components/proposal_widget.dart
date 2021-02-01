@@ -10,7 +10,8 @@ class ProposalsWidget extends StatelessWidget {
   final int scoreUp;
   final int scoreDown;
 
-  const ProposalsWidget(this.name, this.numberOfComments, this.scoreUp, this.scoreDown);
+  const ProposalsWidget(
+      this.name, this.numberOfComments, this.scoreUp, this.scoreDown);
 
   @override
   Widget build(BuildContext context) {

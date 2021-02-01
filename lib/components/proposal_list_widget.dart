@@ -1,5 +1,6 @@
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+
 import 'proposal_widget.dart';
 
 class ProposalsListWidget extends StatelessWidget {

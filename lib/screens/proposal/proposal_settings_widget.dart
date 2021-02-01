@@ -15,8 +15,7 @@ class ProposalsSettingsWidget extends StatelessWidget {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: NetworkImage(
-                  'https://googleflutter.com/sample_image.jpg'),
+              image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
               //fit: BoxFit.fill
             ),
           ),
@@ -134,5 +133,4 @@ class ProposalsSettingsWidget extends StatelessWidget {
       ),
     ]);
   }
-
 }

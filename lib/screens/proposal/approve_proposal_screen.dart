@@ -1,5 +1,3 @@
-import 'package:dumka/screens/components/bottom_sheet.dart';
-import 'package:dumka/screens/proposal/proposal_settings_widget.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +65,7 @@ class ApproveProposalScreen extends StatelessWidget {
     );
   }
 
-  // void showSettingsWindow(BuildContext context) {
-  //   DumkaBottomSheet.show(context, ProposalsSettingsWidget());
-  // }
+// void showSettingsWindow(BuildContext context) {
+//   DumkaBottomSheet.show(context, ProposalsSettingsWidget());
+// }
 }

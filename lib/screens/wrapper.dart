@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'authorization_screen.dart';
+import 'auth/authorization_screen.dart';
 
+// here is all the logic of the app
 class InitScreen extends StatelessWidget {
-  // Create the initialization Future outside of `build`:
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
@@ -32,7 +32,7 @@ class InitScreen extends StatelessWidget {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return SplashScreen();
+        return _LoadingScreen();
       },
     );
   }
@@ -48,7 +48,7 @@ class InitScreen extends StatelessWidget {
   }
 }
 
-class SplashScreen extends StatelessWidget {
+class _LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

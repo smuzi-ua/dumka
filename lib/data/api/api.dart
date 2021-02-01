@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-
 class Api {
   Dio dio;
+
   Api._privateConstructor() {
     final options = BaseOptions(
       baseUrl: 'http://35.246.234.109:8080',
@@ -15,5 +15,7 @@ class Api {
 
   static final Api _instance = Api._privateConstructor();
 
-  static Api get instance { return _instance; }
+  static Api get instance {
+    return _instance;
+  }
 }

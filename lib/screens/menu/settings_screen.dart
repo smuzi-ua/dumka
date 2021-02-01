@@ -1,12 +1,12 @@
+import 'package:custom_switch_button/custom_switch_button.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
-import 'package:custom_switch_button/custom_switch_button.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 
 // ignore: must_be_immutable
 class SettingsWidget extends StatelessWidget {
   bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,7 @@
+import 'package:dumka/screens/user/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-import '../wrapper.dart';
 
 class AuthorizationScreen extends StatefulWidget {
   @override
@@ -82,7 +81,8 @@ class AuthorizationState extends State<AuthorizationScreen> {
                           ),
                           Text(
                             'Авторизація',
-                            style: TextStyle(fontSize: 24, color: Colors.grey.shade900),
+                            style: TextStyle(
+                                fontSize: 24, color: Colors.grey.shade900),
                           ),
                           const SizedBox(
                             height: 16,
@@ -141,7 +141,7 @@ class AuthorizationState extends State<AuthorizationScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => DumkaAppWrapper(),
+                                      builder: (context) => MainUserScreen(),
                                     ));
                               },
                               shape: RoundedRectangleBorder(
