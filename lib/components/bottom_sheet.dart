@@ -16,7 +16,7 @@ class DumkaBottomSheet {
                 children: [
                   FloatingActionButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    backgroundColor: Colors.deepPurpleAccent.shade400,
+                    backgroundColor: Colors.deepPurple.shade300,
                     child: const Icon(
                       MdiIcons.close,
                       color: Colors.white,

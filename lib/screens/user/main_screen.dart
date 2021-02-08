@@ -7,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
-import 'file:///C:/Users/markm/IdeaProjects/dumka/lib/screens/menu.dart';
+import '../menu.dart';
+
 
 class MainUserScreen extends StatefulWidget {
   @override
@@ -324,7 +325,7 @@ class _MainUserScreenState extends State<MainUserScreen>
           elevation: 0,
           focusElevation: 0,
           highlightElevation: 0,
-          backgroundColor: UIConfig.primaryColor,
+          backgroundColor: Colors.deepPurple.shade300,
           onPressed: () {
             DumkaBottomSheet.show(context, AddSuggestionWidget());
           },

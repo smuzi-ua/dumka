@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import 'menu/about_screen.dart';
+
 class BottomMenuFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      key: UniqueKey(),
       padding: const EdgeInsets.all(16),
       child: Column(children: <Widget>[
         Padding(
@@ -18,7 +19,8 @@ class BottomMenuFragment extends StatelessWidget {
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
+                image:
+                    NetworkImage('https://googleflutter.com/sample_image.jpg'),
                 //fit: BoxFit.fill
               ),
             ),
@@ -27,7 +29,7 @@ class BottomMenuFragment extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 2.62),
           child: Text(
-            "Ім'я Прізвище 1211",
+            "Ім'я Прізвищ",
             style: TextStyle(fontSize: 18),
           ),
         ),
@@ -88,34 +90,31 @@ class BottomMenuFragment extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(9),
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Color(0xFFF5F5F5),
-                borderRadius: BorderRadius.all(Radius.circular(15.0))),
-            child: Row(
-              children: <Widget>[
-                 Padding(
-                  padding: EdgeInsets.only(left: 12.0),
-                  child: Text('Про Думку', style: GoogleFonts.poppins(
-                    fontSize: 14
-                  ),),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      icon: const Icon(MdiIcons.message),
-                      onPressed: () {
-                        //do nothing
-                      },
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+        Material(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          clipBehavior: Clip.antiAlias,
+          child: MaterialButton(
+              color: const Color(0xFFF5F5F5),
+              elevation: 0,
+              focusElevation: 0,
+              highlightElevation: 0,
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => AboutWidget()));
+              },
+              child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Про Думку',
+                        style: GoogleFonts.andika(fontSize: 15),
+                      ),
+                      const Icon(MdiIcons.message),
+                    ],
+                  ))),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 3.84, 0, 21.84),
