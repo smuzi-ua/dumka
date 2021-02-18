@@ -1,9 +1,10 @@
-import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'menu/about_screen.dart';
+import 'menu/account_screen.dart';
+import 'menu/settings_screen.dart';
 
 class BottomMenuFragment extends StatelessWidget {
   @override
@@ -19,8 +20,7 @@ class BottomMenuFragment extends StatelessWidget {
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image:
-                    NetworkImage('https://googleflutter.com/sample_image.jpg'),
+                image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
                 //fit: BoxFit.fill
               ),
             ),
@@ -29,70 +29,15 @@ class BottomMenuFragment extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 2.62),
           child: Text(
-            "Ім'я Прізвищ",
+            "Ім'я Прізвище",
             style: TextStyle(fontSize: 18),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(9.0),
-          child: Container(
-            decoration: BoxDecoration(
-                color: UIConfig.grey,
-                borderRadius: const BorderRadius.all(Radius.circular(15.0))),
-            child: InkWell(
-              onTap: () {},
-              child: Row(
-                children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Text('Обліковий запис'),
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        icon: const Icon(MdiIcons.accountCircle),
-                        onPressed: () {
-                          //do nothing
-                        },
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(9.0),
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Color(0xFFF5F5F5),
-                borderRadius: BorderRadius.all(Radius.circular(15.0))),
-            child: Row(
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(left: 12.0),
-                  child: Text('Налаштування'),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      icon: const Icon(MdiIcons.cog),
-                      onPressed: () {
-                        //do nothing
-                      },
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+        const SizedBox(
+          height: 16,
         ),
         Material(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           clipBehavior: Clip.antiAlias,
           child: MaterialButton(
               color: const Color(0xFFF5F5F5),
@@ -100,8 +45,61 @@ class BottomMenuFragment extends StatelessWidget {
               focusElevation: 0,
               highlightElevation: 0,
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (_) => AboutWidget()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => AccountWidget()));
+              },
+              child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Обліковий запис',
+                        style: GoogleFonts.andika(fontSize: 15),
+                      ),
+                      const Icon(Icons.account_box),
+                    ],
+                  ))),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Material(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          clipBehavior: Clip.antiAlias,
+          child: MaterialButton(
+              color: const Color(0xFFF5F5F5),
+              elevation: 0,
+              focusElevation: 0,
+              highlightElevation: 0,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => SettingsWidget()));
+              },
+              child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Налаштування',
+                        style: GoogleFonts.andika(fontSize: 15),
+                      ),
+                      const Icon(Icons.settings_rounded),
+                    ],
+                  ))),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Material(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          clipBehavior: Clip.antiAlias,
+          child: MaterialButton(
+              color: const Color(0xFFF5F5F5),
+              elevation: 0,
+              focusElevation: 0,
+              highlightElevation: 0,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => AboutWidget()));
               },
               child: Padding(
                   padding: const EdgeInsets.all(12),
@@ -116,24 +114,33 @@ class BottomMenuFragment extends StatelessWidget {
                     ],
                   ))),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 3.84, 0, 21.84),
-          child: FlatButton(
-            onPressed: () {},
-            color: Colors.grey,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-            ),
-            child: const Text('Вийти'),
-          ),
+        const SizedBox(height: 16),
+        Material(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          clipBehavior: Clip.antiAlias,
+          child: MaterialButton(
+              color: const Color(0xFFF5F5F5),
+              elevation: 0,
+              focusElevation: 0,
+              highlightElevation: 0,
+              onPressed: () {
+                // todo
+              },
+              child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    'Вийти',
+                    style: GoogleFonts.andika(fontSize: 15),
+                  ))),
         ),
-        const Text(
+        const SizedBox(height: 16),
+        Text(
           'Dumka for Android, v1.0',
-          style: TextStyle(fontSize: 11),
+          style: GoogleFonts.comfortaa(fontSize: 11),
         ),
-        const Text(
+        Text(
           '2021',
-          style: TextStyle(fontSize: 10),
+          style: GoogleFonts.comfortaa(fontSize: 10),
         ),
       ]),
     );
