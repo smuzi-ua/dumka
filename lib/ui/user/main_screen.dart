@@ -1,5 +1,4 @@
-import 'package:dumka/components/bottom_sheet.dart';
-import 'package:dumka/screens/user/add_suggestion_widget.dart';
+import 'package:dumka/ui/components/bottom_sheet.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
 import '../menu.dart';
+import 'add_suggestion_widget.dart';
 
 
 class MainUserScreen extends StatefulWidget {

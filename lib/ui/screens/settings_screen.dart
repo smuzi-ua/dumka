@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 // ignore: must_be_immutable
-class SettingsWidget extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   bool isChecked = false;
 
   @override

@@ -1,13 +1,17 @@
+import 'package:dumka/ui/screens/about_screen.dart';
+import 'package:dumka/ui/screens/account_screen.dart';
+import 'package:dumka/ui/screens/settings_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'screens/wrapper.dart';
+import 'file:///D:/ctemp/IdeaProjects/dumka/lib/wrapper.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+// todo theming
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,12 +26,18 @@ class MyApp extends StatelessWidget {
             child: child,
           );
         },
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Wrapper(),
+          '/user_profile': (context) => AccountScreen(),
+          '/settings': (context) => SettingsScreen(),
+          '/about': (context) => AboutScreen(),
+        },
         title: Texts.title,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: InitScreen());
+        ));
   }
 }
 

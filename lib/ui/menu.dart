@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'menu/about_screen.dart';
-import 'menu/account_screen.dart';
-import 'menu/settings_screen.dart';
+import 'screens/about_screen.dart';
+import 'screens/account_screen.dart';
+import 'screens/settings_screen.dart';
 
 class BottomMenuFragment extends StatelessWidget {
   @override
@@ -33,8 +33,7 @@ class BottomMenuFragment extends StatelessWidget {
             text: 'Обліковий запис',
             icon: Icons.face,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => AccountWidget()));
+              Navigator.of(context).pushNamed('/user_profile');
             }),
         const SizedBox(
           height: 16,
@@ -43,8 +42,7 @@ class BottomMenuFragment extends StatelessWidget {
             text: 'Налаштування',
             icon: Icons.settings_rounded,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SettingsWidget()));
+              Navigator.of(context).pushNamed('/settings');
             }),
         const SizedBox(
           height: 16,
@@ -53,8 +51,8 @@ class BottomMenuFragment extends StatelessWidget {
             text: 'Про Думку',
             icon: Icons.info_outline,
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => AboutWidget()));
+              Navigator.of(context).pushNamed('/about');
+
             }),
         const SizedBox(height: 16),
         Text(
@@ -103,7 +101,7 @@ class _MenuItemComponent extends StatelessWidget {
                     text,
                     style: GoogleFonts.andika(fontSize: 15),
                   ),
-                  Icon(icon, color: Colors.grey.shade800),
+                  Icon(icon, color: Colors.grey.shade700),
                 ],
               ))),
     );

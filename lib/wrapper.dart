@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'auth/authorization_screen.dart';
+import 'ui/auth/authorization_screen.dart';
 
 // here is all the logic of the app
-class InitScreen extends StatelessWidget {
+class Wrapper extends StatelessWidget {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
