@@ -9,7 +9,6 @@ import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import '../menu.dart';
 import 'add_suggestion_widget.dart';
 
-
 class MainUserScreen extends StatefulWidget {
   @override
   _MainUserScreenState createState() => _MainUserScreenState();

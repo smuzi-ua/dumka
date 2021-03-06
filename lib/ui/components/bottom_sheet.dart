@@ -15,6 +15,11 @@ class DumkaBottomSheet {
               child: Column(
                 children: [
                   FloatingActionButton(
+                    elevation: 0,
+                    highlightElevation: 0,
+                    focusElevation: 0,
+                    disabledElevation: 0,
+                    hoverElevation: 0,
                     onPressed: () => Navigator.of(context).pop(),
                     backgroundColor: Colors.deepPurple.shade300,
                     child: const Icon(

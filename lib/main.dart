@@ -2,10 +2,9 @@ import 'package:dumka/ui/screens/about_screen.dart';
 import 'package:dumka/ui/screens/account_screen.dart';
 import 'package:dumka/ui/screens/settings_screen.dart';
 import 'package:dumka/utils/const.dart';
+import 'package:dumka/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'file:///D:/ctemp/IdeaProjects/dumka/lib/wrapper.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,6 +36,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          primarySwatch: Colors.grey,
+          primaryTextTheme:
+              TextTheme(headline6: TextStyle(color: Colors.white)),
         ));
   }
 }

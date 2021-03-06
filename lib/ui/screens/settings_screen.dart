@@ -1,6 +1,7 @@
 import 'package:custom_switch_button/custom_switch_button.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 // ignore: must_be_immutable
@@ -11,9 +12,27 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UIConfig.bgColor,
+      appBar: AppBar(
+        toolbarHeight: 70,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24))),
+        elevation: 0,
+        backgroundColor: Colors.white70,
+        centerTitle: true,
+        title: Text(
+          'Обліковий запис',
+          style: GoogleFonts.montserrat(
+              color: Colors.grey.shade900,
+              fontWeight: FontWeight.w500,
+              fontSize: 22),
+        ),
+        actionsIconTheme: IconThemeData(
+          color: Colors.grey.shade900,
+        ),
+      ),
       body: Column(
-        children: <Widget>[
-          const Spacer(flex: 2),
+        children: [
+          const SizedBox(height: 22),
           Container(
               height: 47,
               margin: const EdgeInsets.symmetric(horizontal: 14),
@@ -51,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               )),
-          const Spacer(),
+          const SizedBox(height: 18),
           Container(
               height: 47,
               margin: const EdgeInsets.symmetric(horizontal: 14),
@@ -86,7 +105,6 @@ class SettingsScreen extends StatelessWidget {
                   )
                 ],
               )),
-          const Spacer(flex: 26),
         ],
       ),
     );

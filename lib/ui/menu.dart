@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'screens/about_screen.dart';
-import 'screens/account_screen.dart';
-import 'screens/settings_screen.dart';
-
 class BottomMenuFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +48,6 @@ class BottomMenuFragment extends StatelessWidget {
             icon: Icons.info_outline,
             onPressed: () {
               Navigator.of(context).pushNamed('/about');
-
             }),
         const SizedBox(height: 16),
         Text(
