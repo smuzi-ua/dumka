@@ -1,5 +1,6 @@
 import 'package:dumka/bloc/school/school_bloc.dart';
 import 'package:dumka/bloc/school/school_state.dart';
+import 'package:dumka/ui/screens/auth/authorization_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -7,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'ui/auth/authorization_screen.dart';
 
 // here is all the logic of the app
 class Wrapper extends StatelessWidget {

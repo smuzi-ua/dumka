@@ -18,7 +18,9 @@ class AboutScreen extends StatelessWidget {
         title: Text(
           'Обліковий запис',
           style: GoogleFonts.montserrat(
-              color: Colors.grey.shade900, fontWeight: FontWeight.w500, fontSize: 22),
+              color: Colors.grey.shade900,
+              fontWeight: FontWeight.w500,
+              fontSize: 22),
         ),
         actionsIconTheme: IconThemeData(
           color: Colors.grey.shade900,
@@ -27,7 +29,6 @@ class AboutScreen extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 22),
-
           Container(
             height: 142,
             width: MediaQuery.of(context).size.width - 28,
@@ -41,11 +42,9 @@ class AboutScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: Colors.black)),
           ),
           const SizedBox(height: 32),
-
           Text(Texts.aboutFeedBack,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const SizedBox(height: 10),
-
           SizedBox(
             width: 200,
             child: Row(
@@ -127,7 +126,6 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 32),
-
           Text(Texts.aboutSupport,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
           const SizedBox(height: 10),
@@ -149,7 +147,6 @@ class AboutScreen extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
     );

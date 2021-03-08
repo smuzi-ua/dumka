@@ -42,8 +42,7 @@ class SettingsScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: <Widget>[
+                children: [
                   Icon(
                     MdiIcons.moonWaningCrescent,
                     color: Colors.deepPurple[400],
@@ -80,8 +79,7 @@ class SettingsScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: <Widget>[
+                children: [
                   Icon(
                     MdiIcons.translate,
                     color: Colors.deepPurple[400],

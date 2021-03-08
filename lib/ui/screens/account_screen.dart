@@ -18,7 +18,9 @@ class AccountScreen extends StatelessWidget {
         title: Text(
           'Обліковий запис',
           style: GoogleFonts.montserrat(
-              color: Colors.grey.shade900, fontWeight: FontWeight.w500, fontSize: 22),
+              color: Colors.grey.shade900,
+              fontWeight: FontWeight.w500,
+              fontSize: 22),
         ),
         actionsIconTheme: IconThemeData(
           color: Colors.grey.shade900,
@@ -121,7 +123,6 @@ class AccountScreen extends StatelessWidget {
                       const Text(Texts.accountAdd,
                           style: TextStyle(fontSize: 16, color: Colors.black)),
                       const SizedBox(width: 14),
-
                     ],
                   )),
             ),

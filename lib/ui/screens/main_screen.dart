@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
-import '../menu.dart';
-import 'add_suggestion_widget.dart';
+import 'menu_popup.dart';
+import 'proposals/add_poposal_popup.dart';
 
 class MainUserScreen extends StatefulWidget {
   @override
@@ -326,7 +326,7 @@ class _MainUserScreenState extends State<MainUserScreen>
           highlightElevation: 0,
           backgroundColor: Colors.deepPurple.shade300,
           onPressed: () {
-            DumkaBottomSheet.show(context, AddSuggestionWidget());
+            DumkaBottomSheet.show(context, AddProposalPopup());
           },
           child: const Icon(
             MdiIcons.plus,
@@ -365,7 +365,7 @@ class _MainUserScreenState extends State<MainUserScreen>
                     icon: const Icon(MdiIcons.menu),
                     color: Colors.grey,
                     onPressed: () {
-                      DumkaBottomSheet.show(context, BottomMenuFragment());
+                      DumkaBottomSheet.show(context, MenuPopup());
                     },
                   ),
                   IconButton(
