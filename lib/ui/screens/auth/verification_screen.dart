@@ -1,11 +1,11 @@
+import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
-import 'package:Dumka/utils/const.dart';
 
 class VerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIConfig.deep_purple_300,
+      backgroundColor: UIConfig.deepPurple300,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,13 +43,13 @@ class VerificationScreen extends StatelessWidget {
                     ),
                     const Text(
                         ' Для того щоб активувати аккаунт.... Для того щоб активувати аккаунт.... Для того щоб активувати аккаунт.... Для того щоб активувати аккаунт....'),
-                    Container(
+                    SizedBox(
                       width: 143.06,
                       child: FlatButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0)),
-                        disabledColor: UIConfig.deep_purple_300,
+                        disabledColor: UIConfig.deepPurple300,
                         child: const Text(
                           'Продовжити',
                           style: TextStyle(color: Colors.white),

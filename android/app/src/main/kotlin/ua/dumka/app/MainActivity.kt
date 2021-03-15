@@ -1,4 +1,4 @@
-package ua.com.dumka.Dumka
+package ua.dumka.app
 
 import io.flutter.embedding.android.FlutterActivity
 
