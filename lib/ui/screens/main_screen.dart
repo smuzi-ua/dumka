@@ -1,19 +1,20 @@
-import 'package:dumka/screens/user/add_suggestion_widget.dart';
-import 'package:dumka/screens/user/user_settings_widget.dart';
+import 'package:dumka/ui/components/bottom_sheet.dart';
 import 'package:dumka/utils/const.dart';
-import 'package:dumka/utils/dumka_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
-class UserWrapper extends StatefulWidget {
+import 'menu_popup.dart';
+import 'proposals/add_poposal_popup.dart';
+
+class MainUserScreen extends StatefulWidget {
   @override
-  _UserWrapperState createState() => _UserWrapperState();
+  _MainUserScreenState createState() => _MainUserScreenState();
 }
 
-class _UserWrapperState extends State<UserWrapper>
+class _MainUserScreenState extends State<MainUserScreen>
     with TickerProviderStateMixin {
   ScrollController _scroll;
   TabController _mainTabs;
@@ -323,9 +324,9 @@ class _UserWrapperState extends State<UserWrapper>
           elevation: 0,
           focusElevation: 0,
           highlightElevation: 0,
-          backgroundColor: UIConfig.primaryColor,
+          backgroundColor: Colors.deepPurple.shade300,
           onPressed: () {
-            showAddSuggestionWindow(context);
+            DumkaBottomSheet.show(context, AddProposalPopup());
           },
           child: const Icon(
             MdiIcons.plus,
@@ -348,42 +349,38 @@ class _UserWrapperState extends State<UserWrapper>
             return child;
           }
         },
-        child: BottomAppBar(
-          elevation: 0,
-          shape: const CircularNotchedRectangle(),
-          color: Colors.white,
-          child: SizedBox(
-            height: 54,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: const Icon(MdiIcons.menu),
-                  color: Colors.grey,
-                  onPressed: () {
-                    showSettingsWindow(context);
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(MdiIcons.magnify),
-                  color: Colors.grey,
-                  onPressed: () {
-                    // todo Search
-                  },
-                ),
-              ],
+        // todo move from here
+        child: ClipRRect(
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+          child: BottomAppBar(
+            elevation: 0,
+            shape: const CircularNotchedRectangle(),
+            color: Colors.white,
+            child: SizedBox(
+              height: 54,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: const Icon(MdiIcons.menu),
+                    color: Colors.grey,
+                    onPressed: () {
+                      DumkaBottomSheet.show(context, MenuPopup());
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(MdiIcons.magnify),
+                    color: Colors.grey,
+                    onPressed: () {
+                      // todo Search
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  void showAddSuggestionWindow(BuildContext c) {
-    DumkaModalSheet.show(context: c, child: AddSuggestionWidget());
-  }
-
-  void showSettingsWindow(BuildContext context) {
-    DumkaModalSheet.show(context: context, child: UserSettingsWidget());
   }
 }

@@ -1,6 +1,4 @@
-
 // TODO: Make models for working with network
-
 
 class School {
   int id;
@@ -22,14 +20,7 @@ class School {
   List<School> listFromJson(List<dynamic> listOfJson) =>
       listOfJson.map((item) => fromJson(item as Map<String, dynamic>)).toList();
 
-  Map<String, dynamic> toJson() =>
-      {
-        'id': id,
-        'name': name,
-        'display': display
-      };
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'display': display};
 }
 
-class Proposal {
-
-}
+class Proposal {}

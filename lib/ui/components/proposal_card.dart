@@ -4,13 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class ProposalsWidget extends StatelessWidget {
+class ProposalCardComponent extends StatelessWidget {
   final String name;
   final int numberOfComments;
   final int scoreUp;
   final int scoreDown;
 
-  const ProposalsWidget(this.name, this.numberOfComments, this.scoreUp, this.scoreDown);
+  const ProposalCardComponent(
+      this.name, this.numberOfComments, this.scoreUp, this.scoreDown);
 
   @override
   Widget build(BuildContext context) {

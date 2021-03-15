@@ -1,16 +1,34 @@
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-
-class AboutWidget extends StatelessWidget {
+class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UIConfig.bgColor,
+      appBar: AppBar(
+        toolbarHeight: 70,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(24))),
+        elevation: 0,
+        backgroundColor: Colors.white70,
+        centerTitle: true,
+        title: Text(
+          'Обліковий запис',
+          style: GoogleFonts.montserrat(
+              color: Colors.grey.shade900,
+              fontWeight: FontWeight.w500,
+              fontSize: 22),
+        ),
+        actionsIconTheme: IconThemeData(
+          color: Colors.grey.shade900,
+        ),
+      ),
       body: Column(
-        children: <Widget>[
-          const Spacer(flex: 2),
+        children: [
+          const SizedBox(height: 22),
           Container(
             height: 142,
             width: MediaQuery.of(context).size.width - 28,
@@ -23,14 +41,12 @@ class AboutWidget extends StatelessWidget {
             child: const Text(Texts.aboutText,
                 style: TextStyle(fontSize: 16, color: Colors.black)),
           ),
-          // ignore: avoid_escaping_inner_quotes
-          const Spacer(flex: 2),
-          // ignore: avoid_escaping_inner_quotes
+          const SizedBox(height: 32),
           Text(Texts.aboutFeedBack,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
-          const Spacer(),
+          const SizedBox(height: 10),
           SizedBox(
-            width: 205.2,
+            width: 200,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -109,10 +125,10 @@ class AboutWidget extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(flex: 2),
+          const SizedBox(height: 32),
           Text(Texts.aboutSupport,
               style: TextStyle(fontSize: 14, color: Colors.grey[800])),
-          const Spacer(),
+          const SizedBox(height: 10),
           SizedBox(
             width: 42,
             height: 42,
@@ -131,7 +147,6 @@ class AboutWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(flex: 8),
         ],
       ),
     );

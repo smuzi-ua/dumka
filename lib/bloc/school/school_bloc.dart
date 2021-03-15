@@ -33,5 +33,4 @@ class SchoolBloc extends Bloc<SchoolListEvent, SchoolListState> {
       yield SchoolListErrorState();
     }
   }
-
 }
