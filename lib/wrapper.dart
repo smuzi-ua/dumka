@@ -1,6 +1,6 @@
 import 'package:dumka/bloc/school/school_bloc.dart';
 import 'package:dumka/bloc/school/school_state.dart';
-import 'package:dumka/ui/screens/auth/authorization_screen.dart';
+import 'package:dumka/ui/screens/auth/auth_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -119,12 +119,13 @@ var _schoolBloc = SchoolBloc();
 //   }
 // }
 
+// todo display status messages on the main screen like this
 // Exmaple of BLoC
 class SchoolFetcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SchoolBloc, SchoolListState>(
-      cubit: _schoolBloc,
+      bloc: _schoolBloc,
       builder: (BuildContext context, SchoolListState state) {
         //log(state.toString());
         if (state is SchoolListEmptyState) {
