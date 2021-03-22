@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           primarySwatch: Colors.grey,
           primaryTextTheme:
-              TextTheme(headline6: TextStyle(color: Colors.white)),
+              const TextTheme(headline6: TextStyle(color: Colors.white)),
         ));
   }
 }
