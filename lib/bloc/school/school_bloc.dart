@@ -16,9 +16,6 @@ class SchoolBloc extends Bloc<SchoolListEvent, SchoolListState> {
   @override
   Stream<SchoolListState> mapEventToState(SchoolListEvent event) async* {
 
-    print('event');
-
-
     yield SchoolListFetchingState();
     List<School> schools;
 
