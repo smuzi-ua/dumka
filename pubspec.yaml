@@ -17,18 +17,18 @@ dependencies:
   material_design_icons_flutter: ^4.0.5955
 
   google_fonts: ^2.0.0
-  flutter_svg: ^0.19.3
+  flutter_svg: ^0.22.0
   md2_tab_indicator: ^1.0.2
 
-  firebase_core: ^1.0.1
-  firebase_analytics: ^7.1.1
-  firebase_crashlytics: ^1.0.0
+  firebase_core: ^1.5.0
+  firebase_analytics: ^8.3.0
+  firebase_crashlytics: ^2.2.0
 
   dio: ^4.0.0-prev3
-  flutter_bloc: ^7.0.0
+  flutter_bloc: ^7.2.0
 
   # todo use hive + encrypted storage
-  shared_preferences: ^2.0.5
+  shared_preferences: ^2.0.7
 
 dev_dependencies:
   flutter_test:

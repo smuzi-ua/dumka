@@ -1,16 +1,18 @@
-import 'package:dumka/bloc/school/school_bloc.dart';
-import 'package:dumka/bloc/school/school_event.dart';
-import 'package:dumka/bloc/school/school_state.dart';
-import 'package:dumka/data/model/models.dart';
-import 'package:dumka/utils/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../../bloc/school/school_bloc.dart';
+import '../../../bloc/school/school_event.dart';
+import '../../../bloc/school/school_state.dart';
+import '../../../data/model/models.dart';
+import '../../../utils/const.dart';
 import '../main_screen.dart';
 
 class AuthorizationScreen extends StatelessWidget {
+  final _authCard = _AuthCard();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +20,14 @@ class AuthorizationScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            minWidth: MediaQuery.of(context).size.width,
-            minHeight: MediaQuery.of(context).size.height,
+            minWidth: MediaQuery
+                .of(context)
+                .size
+                .width,
+            minHeight: MediaQuery
+                .of(context)
+                .size
+                .height,
           ),
           child: IntrinsicHeight(
             child: Column(
@@ -54,11 +62,11 @@ class AuthorizationScreen extends StatelessWidget {
                   child: Container(
                       decoration: const BoxDecoration(
                           borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(24)),
+                          BorderRadius.vertical(top: Radius.circular(24)),
                           color: Colors.white),
                       padding: const EdgeInsets.all(24),
-                      width: double.infinity,
-                      child: _AuthCard()),
+                      width: double.maxFinite,
+                      child: _authCard),
                 )
               ],
             ),
@@ -72,10 +80,18 @@ class AuthorizationScreen extends StatelessWidget {
 // todo separate screen for choosing school - with sorted scroll and search bar
 // FIXME: is built twice for some reason
 class _AuthCard extends StatelessWidget {
+  final _bloc = SchoolBloc();
+
   @override
   Widget build(BuildContext context) {
+
+    if (_bloc.state is SchoolListUninitializedState) {
+      print('fetching');
+      _bloc.add(SchoolListFetchEvent());
+    }
+
     return BlocBuilder<SchoolBloc, SchoolListState>(
-        bloc: SchoolBloc()..add(SchoolListFetchEvent()),
+        bloc: _bloc,
         builder: (_, SchoolListState state) {
           if (state is SchoolListUninitializedState ||
               state is SchoolListFetchingState) {
@@ -87,7 +103,7 @@ class _AuthCard extends StatelessWidget {
                   child: CircularProgressIndicator(
                     strokeWidth: 3,
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
+                    AlwaysStoppedAnimation<Color>(UIConfig.primaryColor),
                   ),
                 ),
               ],
@@ -110,16 +126,18 @@ class _AuthCard extends StatelessWidget {
                   height: 16,
                 ),
                 DropdownButtonFormField<School>(
+                  isExpanded: true,
                   decoration: const InputDecoration(labelText: 'Школа'),
                   icon: const Icon(MdiIcons.arrowDown),
                   elevation: 16,
                   onChanged: (School newValue) {},
                   items: (state as SchoolListFetchedState)
                       .schools
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e.name),
-                          ))
+                      .map((e) =>
+                      DropdownMenuItem(
+                        value: e,
+                        child: Text(e.name),
+                      ))
                       .toList(),
                 ),
                 const SizedBox(

@@ -3,9 +3,8 @@
 class School {
   int id;
   String name;
-  bool display;
 
-  School({this.id, this.name, this.display});
+  School({this.id, this.name});
 
   School.builder();
 
@@ -13,14 +12,13 @@ class School {
     return School(
       id: json['id'] as int,
       name: json['name'] as String,
-      display: json['display'] as bool,
     );
   }
 
   List<School> listFromJson(List<dynamic> listOfJson) =>
       listOfJson.map((item) => fromJson(item as Map<String, dynamic>)).toList();
 
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'display': display};
+  Map<String, dynamic> toJson() => {'id': id, 'name': name};
 }
 
 class Proposal {}

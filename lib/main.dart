@@ -1,10 +1,11 @@
-import 'package:dumka/ui/screens/about_screen.dart';
-import 'package:dumka/ui/screens/account_screen.dart';
-import 'package:dumka/ui/screens/settings_screen.dart';
-import 'package:dumka/utils/const.dart';
-import 'package:dumka/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'ui/screens/about_screen.dart';
+import 'ui/screens/account_screen.dart';
+import 'ui/screens/settings_screen.dart';
+import 'utils/const.dart';
+import 'wrapper.dart';
 
 void main() {
   runApp(MyApp());
