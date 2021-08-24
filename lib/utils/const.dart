@@ -14,7 +14,7 @@ class Texts {
   static const proposalsText = 'Пропозиції';
   static const reportsText = 'Розмови';
 
-  static const aboutTitle = 'Про думку';
+  static const aboutTitle = 'Про Dumka?';
   static const settingsTitle = 'Налаштування';
   static const accountTitle = 'Обліковий запис';
 

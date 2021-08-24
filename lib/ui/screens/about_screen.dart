@@ -16,7 +16,7 @@ class AboutScreen extends StatelessWidget {
         backgroundColor: Colors.white70,
         centerTitle: true,
         title: Text(
-          'Обліковий запис',
+          'Про Dumka?',
           style: GoogleFonts.montserrat(
               color: Colors.grey.shade900,
               fontWeight: FontWeight.w500,

@@ -15,6 +15,7 @@ dependencies:
   # UI
   custom_switch_button: ^0.5.0
   material_design_icons_flutter: ^4.0.5955
+  lucide_icons: ^0.15.22
 
   google_fonts: ^2.0.0
   flutter_svg: ^0.19.3

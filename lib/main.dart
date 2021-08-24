@@ -1,5 +1,7 @@
 import 'package:dumka/ui/screens/about_screen.dart';
 import 'package:dumka/ui/screens/account_screen.dart';
+import 'package:dumka/ui/screens/admin/control_screen.dart';
+import 'package:dumka/ui/screens/admin/proposal_moderation.dart';
 import 'package:dumka/ui/screens/settings_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:dumka/wrapper.dart';
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
           '/user_profile': (context) => AccountScreen(),
           '/settings': (context) => SettingsScreen(),
           '/about': (context) => AboutScreen(),
+          '/control': (context) => ControlScreen(),
         },
         title: Texts.title,
         debugShowCheckedModeBanner: false,
