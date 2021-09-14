@@ -16,15 +16,15 @@ dependencies:
   custom_switch_button: ^0.5.0
   material_design_icons_flutter: ^4.0.5955
 
-  google_fonts: ^2.0.0
+  google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
   md2_tab_indicator: ^1.0.2
 
-  firebase_core: ^1.5.0
-  firebase_analytics: ^8.3.0
-  firebase_crashlytics: ^2.2.0
+  firebase_core: ^1.6.0
+  firebase_analytics: ^8.3.2
+  firebase_crashlytics: ^2.2.1
 
-  dio: ^4.0.0-prev3
+  dio: ^4.0.0
   flutter_bloc: ^7.2.0
 
   # todo use hive + encrypted storage

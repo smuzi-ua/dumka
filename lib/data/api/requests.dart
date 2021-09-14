@@ -10,7 +10,8 @@ const api = 'https://dumka-backend.herokuapp.com/api/v1';
 const postSchools = '/v1/schools';
 const postStatus = '/v1/status';
 const postReportCategories = '/v1/report_categories';
-const postAuth = '/v1/auth';
+const postAuth =
+    'https://dumka-backend.herokuapp.com/api/v1/schools/1/users/auth';
 
 // Token Endpoints
 const postUser = '/v1/u/user';
@@ -41,8 +42,12 @@ class Requests {
     return response;
   }
 
-  Future<Response> auth() async {
-    final response = await Api.instance.dio.post(postAuth);
+  Future<Response> auth(int schoolId, String name, String nickname) async {
+    final response =
+        await Api.instance.dio.post('$api/schools/$schoolId/users/auth', data: {
+      'name': name,
+      'slug': nickname,
+    });
     return response;
   }
 

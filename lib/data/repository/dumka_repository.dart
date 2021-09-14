@@ -10,6 +10,13 @@ class DumkaRepository {
     return _requests.fetchSchools();
   }
 
+  Future<bool> auth(int schoolId, String name, String nickname) async {
+    print('repo auth');
+    final req = await _requests.auth(schoolId, name, nickname);
+    print(req.statusCode);
+    return req.statusCode == 200;
+  }
+
   Future<void> fetchProposalsList() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Prefs.tokenPref) ?? '';
