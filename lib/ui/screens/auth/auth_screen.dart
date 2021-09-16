@@ -123,7 +123,7 @@ class __AuthCardState extends State<_AuthCard> {
               builder: (context, stateAuth) {
                 if (stateAuth is AuthWaitingForVerificationState) {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => VerificationScreen()));
+                      MaterialPageRoute(builder: (_) => VerificationScreen(schoolId, loginController.text)));
                 }
 
                 print('Building auth state: ${stateAuth.runtimeType}');

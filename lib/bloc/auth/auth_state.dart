@@ -7,3 +7,6 @@ class AuthUninitializedState extends AuthState {}
 
 class AuthWaitingForVerificationState extends AuthState {}
 
+class AuthAuthorizedState extends AuthState {}
+
+

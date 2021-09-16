@@ -32,6 +32,8 @@ class Requests {
     return schoolList;
   }
 
+  // todo dio throws an exception when response code is not 200
+
   Future<Response> fetchStatus() async {
     final response = await Api.instance.dio.get(postStatus);
     return response;
@@ -46,6 +48,15 @@ class Requests {
     final response =
         await Api.instance.dio.post('$api/schools/$schoolId/users/auth', data: {
       'name': name,
+      'slug': nickname,
+    });
+    return response;
+  }
+
+  Future<Response> authVerify(int schoolId, String nickname, String code) async {
+    final response =
+        await Api.instance.dio.post('$api/schools/$schoolId/users/verify', data: {
+      'verification_code': code,
       'slug': nickname,
     });
     return response;

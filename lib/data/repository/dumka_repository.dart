@@ -17,6 +17,17 @@ class DumkaRepository {
     return req.statusCode == 200;
   }
 
+  Future<String> verifyAuth(int schoolId, String nickname, String code) async {
+    final req = await _requests.authVerify(schoolId, nickname, code);
+    if (req.statusCode != 200) {
+      return null;
+    }
+    print('verification');
+    print(req.data);
+    
+    return req.data['token'] as String;
+  }
+
   Future<void> fetchProposalsList() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Prefs.tokenPref) ?? '';

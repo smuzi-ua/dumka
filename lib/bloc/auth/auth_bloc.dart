@@ -21,14 +21,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     print('event: ${event.runtimeType}');
 
     if (event is AuthLogInEvent) {
-
-      final res = await repository.auth(event.schoolId, event.name, event.login);
+      final res =
+          await repository.auth(event.schoolId, event.name, event.login);
 
       if (res) {
         yield AuthWaitingForVerificationState();
       } else {
         yield AuthUninitializedState();
       }
+    } else if (event is AuthVerifyEvent) {
+      final res =
+          await repository.verifyAuth(event.schoolId, event.login, event.code);
+
+      if(res != null){
+        yield AuthWaitingForVerificationState();
+      } else {
+        print('AUTHED!!!!!!');
+        print(res);
+        // todo save in local storage & show main page
+        yield AuthAuthorizedState();
+      }
+
     }
   }
 }

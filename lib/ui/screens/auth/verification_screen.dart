@@ -1,7 +1,17 @@
+import 'package:dumka/bloc/auth/auth_bloc.dart';
+import 'package:dumka/bloc/auth/auth_event.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerificationScreen extends StatelessWidget {
+  final codeController = TextEditingController();
+  final int schoolId;
+  final String nickname;
+
+  VerificationScreen(this.schoolId, this.nickname);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +41,10 @@ class VerificationScreen extends StatelessWidget {
                       'Верифікація',
                       style: TextStyle(fontSize: 24),
                     ),
-                    const Image(
-                      image: AssetImage('assets/verification_photo.png'),
-                    ),
-                    const TextField(
-                      decoration: InputDecoration(
+                    SvgPicture.asset('assets/account_verification.svg'),
+                    TextField(
+                      controller: codeController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Код доступу',
                       ),
@@ -46,13 +55,15 @@ class VerificationScreen extends StatelessWidget {
                     SizedBox(
                       width: 143.06,
                       child: FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.read<AuthBloc>().add(AuthVerifyEvent(schoolId, nickname, codeController.text));
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0)),
                         disabledColor: UIConfig.deepPurple300,
                         child: const Text(
                           'Продовжити',
-                          style: TextStyle(color: Colors.white),
+                          // style: TextStyle(color: Colors.white),
                         ),
                       ),
                     )
