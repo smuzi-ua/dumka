@@ -118,98 +118,102 @@ class __AuthCardState extends State<_AuthCard> {
 
           assert(stateSchools is SchoolListFetchedState);
 
-          return BlocBuilder<AuthBloc, AuthState>(
+          return BlocListener<AuthBloc, AuthState>(
               bloc: context.read<AuthBloc>(),
-              builder: (context, stateAuth) {
-                if (stateAuth is AuthWaitingForVerificationState) {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => VerificationScreen(schoolId, loginController.text)));
-                }
+              listener: (context, state) async {
+                if (state is AuthWaitingForVerificationState) {
+                  final result =await Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) =>
+                          VerificationScreen(schoolId, loginController.text)));
 
-                print('Building auth state: ${stateAuth.runtimeType}');
-                return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const SizedBox(
-                        height: 16,
+                  if (result != null) {
+                    print('GOT RESULT');
+                    Navigator.of(context).pushReplacementNamed('/');
+                  }
+                }
+              },
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      'Авторизація',
+                      style:
+                          TextStyle(fontSize: 24, color: Colors.grey.shade900),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    DropdownButtonFormField<School>(
+                      isExpanded: true,
+                      decoration: const InputDecoration(labelText: 'Школа'),
+                      icon: const Icon(MdiIcons.arrowDown),
+                      elevation: 16,
+                      onChanged: (School newValue) =>
+                          setState(() => schoolId = newValue.id),
+                      items: (stateSchools as SchoolListFetchedState)
+                          .schools
+                          .map((e) => DropdownMenuItem(
+                                value: e,
+                                child: Text(e.name),
+                              ))
+                          .toList(),
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    const Align(
+                        alignment: Alignment.centerRight,
+                        child: Text('Вашої школи немає в списку?')),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextField(
+                      controller: loginController,
+                      textAlign: TextAlign.left,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Нікнейм',
                       ),
-                      Text(
-                        'Авторизація',
-                        style: TextStyle(
-                            fontSize: 24, color: Colors.grey.shade900),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    TextField(
+                      controller: nameController,
+                      textAlign: TextAlign.left,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Призвіще Імя',
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      DropdownButtonFormField<School>(
-                        isExpanded: true,
-                        decoration: const InputDecoration(labelText: 'Школа'),
-                        icon: const Icon(MdiIcons.arrowDown),
-                        elevation: 16,
-                        onChanged: (School newValue) => setState(() => schoolId = newValue.id),
-                        items: (stateSchools as SchoolListFetchedState)
-                            .schools
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e.name),
-                                ))
-                            .toList(),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      const Align(
-                          alignment: Alignment.centerRight,
-                          child: Text('Вашої школи немає в списку?')),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextField(
-                        controller: loginController,
-                        textAlign: TextAlign.left,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Нікнейм',
+                    ),
+                    const SizedBox(
+                      height: 22,
+                    ),
+                    SizedBox(
+                      width: 143.06,
+                      child: FlatButton(
+                        color: Colors.deepPurple.shade400,
+                        // todo validation
+                        onPressed: () {
+                          context.read<AuthBloc>().add(AuthLogInEvent(schoolId,
+                              nameController.text, loginController.text));
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        // disabledColor: Colors.deepPurple.shade900,
+                        child: const Text(
+                          'Увійти',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextField(
-                        controller: nameController,
-                        textAlign: TextAlign.left,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Призвіще Імя',
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 22,
-                      ),
-                      SizedBox(
-                        width: 143.06,
-                        child: FlatButton(
-                          color: Colors.deepPurple.shade400,
-                          onPressed: () {
-                            context.read<AuthBloc>().add(AuthLogInEvent(
-                                schoolId,
-                                nameController.text,
-                                loginController.text));
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          // disabledColor: Colors.deepPurple.shade900,
-                          child: const Text(
-                            'Увійти',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                    ]);
-              });
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                  ]));
         });
   }
 }
