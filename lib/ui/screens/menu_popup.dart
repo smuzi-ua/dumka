@@ -1,7 +1,13 @@
+import 'package:dumka/ui/screens/account_screen.dart';
+import 'package:dumka/ui/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MenuPopup extends StatelessWidget {
+  final BuildContext screenContext;
+
+  const MenuPopup(this.screenContext);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +35,10 @@ class MenuPopup extends StatelessWidget {
             text: 'Обліковий запис',
             icon: Icons.face,
             onPressed: () {
-              Navigator.of(context).pushNamed('/user_profile');
+              Navigator.of(screenContext).popUntil((route) => route.isFirst);
+
+              Navigator.of(screenContext).pushReplacement(
+                  MaterialPageRoute(builder: (_) => AccountScreen()));
             }),
         const SizedBox(
           height: 16,

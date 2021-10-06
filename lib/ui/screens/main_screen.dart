@@ -1,4 +1,5 @@
 import 'package:dumka/ui/components/bottom_sheet.dart';
+import 'package:dumka/ui/components/main_bottom_menu.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -350,37 +351,9 @@ class _MainUserScreenState extends State<MainUserScreen>
           }
         },
         // todo move from here
-        child: ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-          child: BottomAppBar(
-            elevation: 0,
-            shape: const CircularNotchedRectangle(),
-            color: Colors.white,
-            child: SizedBox(
-              height: 54,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(MdiIcons.menu),
-                    color: Colors.grey,
-                    onPressed: () {
-                      DumkaBottomSheet.show(context, MenuPopup());
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(MdiIcons.magnify),
-                    color: Colors.grey,
-                    onPressed: () {
-                      // todo Search
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        child: MainBottomMenu(context),
       ),
     );
   }
 }
+

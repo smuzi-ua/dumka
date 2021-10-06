@@ -1,8 +1,8 @@
-import 'package:dumka/bloc/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/auth/auth_bloc.dart';
 import 'ui/screens/about_screen.dart';
 import 'ui/screens/account_screen.dart';
 import 'ui/screens/settings_screen.dart';
@@ -14,6 +14,8 @@ void main() {
 }
 
 // todo theming
+// todo fix the page transitioning effect
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

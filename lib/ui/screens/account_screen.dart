@@ -1,14 +1,32 @@
+import 'package:dumka/ui/components/main_bottom_menu.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: MainBottomMenu(context, sideScreen: true),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        focusElevation: 0,
+        highlightElevation: 0,
+        backgroundColor: Colors.deepPurple.shade300,
+        onPressed: () {
+          Navigator.of(context).pushReplacementNamed('/');
+        },
+        child: const Icon(
+          MdiIcons.arrowLeft,
+          color: Colors.white,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 70,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(24))),
@@ -22,9 +40,7 @@ class AccountScreen extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: 22),
         ),
-        actionsIconTheme: IconThemeData(
-          color: Colors.grey.shade900,
-        ),
+
       ),
       backgroundColor: UIConfig.bgColor,
       body: Padding(
@@ -125,6 +141,38 @@ class AccountScreen extends StatelessWidget {
                       const SizedBox(width: 14),
                     ],
                   )),
+            ),
+            const SizedBox(height: 24),
+            Material(
+              borderRadius: BorderRadius.circular(8),
+              child: InkWell(
+                onTap: () async {
+                  print('logging out');
+                  final s = await SharedPreferences.getInstance();
+                  s.remove(Prefs.tokenPref);
+                  Navigator.of(context).pushReplacementNamed('/');
+                },
+                child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 14),
+                        Icon(
+                          MdiIcons.logout,
+                          color: Colors.deepPurple[400],
+                          size: 25,
+                        ),
+                        const SizedBox(width: 16),
+                        const Text('Вийти',
+                            style: TextStyle(fontSize: 16, color: Colors.black)),
+                        const SizedBox(width: 14),
+                      ],
+                    )),
+              ),
             ),
             const Spacer(flex: 10),
           ],
