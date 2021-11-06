@@ -22,7 +22,7 @@ class ProposalBodyComponent extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 17),
             child: Text(
-              ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum urna vel dolor sollicitudin accumsan. In auctor finibus diam, quis malesuada mi congue in. Sed dignissim sollicitudin tortor eu mollis. Proin sagittis ex eu tempor tristique. Nullam feugiat mi eget tincidunt euismod. Ut vel nisi vitae lectus maximus finibus sit amet nec tortor. Vestibulum at augue at justo pellentesque dapibus eget id odio. Suspendisse ultrices sed dui sed mattis. Praesent elementum in tellus quis malesuada. Nullam commodo vulputate feugiat.',
+              ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum urna vel dolor sollicitudin accumsan. In auctor finibus diam, quis malesuada mi congue in. Sed dignissim sollicitudin tortor eu mollis.',
               style: TextStyle(color: Colors.grey[800], fontSize: 18.0),
             ),
           ),

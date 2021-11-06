@@ -3,6 +3,7 @@ import 'package:dumka/ui/screens/account_screen.dart';
 import 'package:dumka/ui/screens/admin/control_screen.dart';
 import 'package:dumka/ui/screens/admin/proposal_moderation.dart';
 import 'package:dumka/ui/screens/settings_screen.dart';
+import 'package:dumka/ui/screens/proposals/proposal_screen.dart';
 import 'package:dumka/utils/const.dart';
 import 'package:dumka/wrapper.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,8 @@ class MyApp extends StatelessWidget {
           '/settings': (context) => SettingsScreen(),
           '/about': (context) => AboutScreen(),
           '/control': (context) => ControlScreen(),
+          '/prop_moderation': (context) => ProposalModerationScreen(1),
+          '/prop': (context) => ProposalScreen(1),
         },
         title: Texts.title,
         debugShowCheckedModeBanner: false,

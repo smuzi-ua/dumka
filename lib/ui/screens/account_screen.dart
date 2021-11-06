@@ -64,10 +64,15 @@ class AccountScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14, color: Colors.deepPurple[200])),
                     const Spacer(),
-                    Icon(
-                      MdiIcons.pencil,
-                      color: Colors.deepPurple[400],
-                      size: 18,
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      icon: Icon(MdiIcons.pencil,
+                        color: Colors.deepPurple[400],
+                        size: 18,),
+                      onPressed: () {
+                        // todo key
+                      },
                     ),
                   ],
                 )),
@@ -94,10 +99,15 @@ class AccountScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14, color: Colors.deepPurple[200])),
                     const Spacer(),
-                    Icon(
-                      MdiIcons.trashCanOutline,
-                      color: Colors.deepPurple[400],
-                      size: 18,
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      icon: Icon(MdiIcons.trashCanOutline,
+                        color: Colors.deepPurple[400],
+                        size: 18,),
+                      onPressed: () {
+                        // todo key
+                      },
                     ),
                   ],
                 )),
@@ -106,25 +116,26 @@ class AccountScreen extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: Container(
                   height: 50,
+                  width: 120,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.white,
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(width: 14),
-                      Icon(
-                        MdiIcons.plus,
-                        color: Colors.deepPurple[400],
-                        size: 25,
-                      ),
-                      const SizedBox(width: 16),
-                      const Text(Texts.accountAdd,
-                          style: TextStyle(fontSize: 16, color: Colors.black)),
-                      const SizedBox(width: 14),
-                    ],
-                  )),
+                  child: FlatButton(
+                    onPressed: () => {},
+                    padding: EdgeInsets.all(10.0),
+                    child: Row( // Replace with a Row for horizontal icon + text
+                      children: <Widget>[
+                        Icon(
+                          MdiIcons.plus,
+                          color: Colors.deepPurple[400],
+                          size: 25,
+                        ),
+                        const Text(Texts.accountAdd,
+                            style: TextStyle(fontSize: 16, color: Colors.black)),
+                      ],
+                    ),
+                  ),),
             ),
             const Spacer(flex: 10),
           ],
